@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.pi4j:pi4j-device:sources:1.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/pi4j/pi4j-device/1.1-SNAPSHOT/pi4j-device-1.1-20150311.142151-6-sources.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/pi4j/pi4j-device/1.1-SNAPSHOT/pi4j-device-1.1-20150311.142151-6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/pi4j/pi4j-device/1.1-SNAPSHOT/pi4j-device-1.1-20150311.142151-6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
