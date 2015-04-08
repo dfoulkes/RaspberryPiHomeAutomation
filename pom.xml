@@ -12,17 +12,17 @@
         <jackson.databind-version>2.2.3</jackson.databind-version>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>oss-snapshots-repo</id>
-            <name>Sonatype OSS Maven Repository</name>
-            <url>https://oss.sonatype.org/content/groups/public</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>oss-snapshots-repo</id>-->
+            <!--<name>Sonatype OSS Maven Repository</name>-->
+            <!--<url>https://oss.sonatype.org/content/groups/public</url>-->
+            <!--<snapshots>-->
+                <!--<enabled>true</enabled>-->
+                <!--<updatePolicy>always</updatePolicy>-->
+            <!--</snapshots>-->
+        <!--</repository>-->
+    <!--</repositories>-->
 
     <dependencies>
 
@@ -44,7 +44,8 @@
         <dependency>
             <groupId>com.pi4j</groupId>
             <artifactId>pi4j-device</artifactId>
-            <version>1.1-SNAPSHOT</version>
+            <!--<version>1.1-SNAPSHOT</version>-->
+            <version>1.0-DF</version>
             <classifier>sources</classifier>
         </dependency>
 
@@ -108,8 +109,8 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
             <plugin>
