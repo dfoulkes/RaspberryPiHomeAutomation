@@ -58,8 +58,15 @@ public class FileService implements GPIOService {
 
     public Boolean getLightStatus(Socket soc) throws StatusException {
 
+        File current;
+
+        //TODO expand for further sockets
+        switch(soc){
+          case SOC1: current = socket1;
+          default : current = socket1;
+        }
         try {
-            BufferedReader reader = new BufferedReader(new FileReader (socket1));
+            BufferedReader reader = new BufferedReader(new FileReader (current));
             String         line = null;
             StringBuilder  stringBuilder = new StringBuilder();
             String         ls = System.getProperty("line.separator");

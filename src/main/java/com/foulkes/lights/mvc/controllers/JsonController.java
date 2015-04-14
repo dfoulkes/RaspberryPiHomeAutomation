@@ -5,15 +5,14 @@ import com.foulkes.lights.mvc.factory.CommandFactory;
 import com.foulkes.lights.mvc.json.Light;
 import com.foulkes.lights.mvc.json.ServerStatus;
 import com.foulkes.lights.mvc.service.GPIOService;
+import com.foulkes.lights.mvc.service.exception.StatusException;
 import com.foulkes.lights.mvc.setup.AppConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
 import java.util.Date;
 
 @Controller
@@ -34,7 +33,7 @@ public class JsonController {
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.HEAD})
 	public String printWelcome(ModelMap model) {
 		model.addAttribute("message", "Hello world!");
-		return "hello";
+		return "lightControl";
 	}
 
     /**
@@ -44,10 +43,11 @@ public class JsonController {
      */
     @RequestMapping(value = "/turnOn", method = {RequestMethod.GET, RequestMethod.HEAD})
     public @ResponseBody
-    Light turnOn(@PathVariable("socket") String socket) {
+    Light turnOn(@RequestParam(value="socket") String socket) {
        // logger.info("Start getEmployee. ID="+empId);
         Light dummy = new Light();
         Socket soc = Socket.find(socket);
+        dummy.setSocket(soc.name());
         gpioService.executeCommand(soc,true);
         return dummy;
     }
@@ -59,11 +59,10 @@ public class JsonController {
      */
     @RequestMapping(value = "/turnOff", method = {RequestMethod.GET, RequestMethod.HEAD})
     public @ResponseBody
-    Light turnOff(@PathVariable("socket") String socket) {
+    Light turnOff(@RequestParam(value="socket") String socket) {
         // logger.info("Start getEmployee. ID="+empId);
         Light dummy = new Light();
         Socket s = Socket.find(socket);
-
         gpioService.executeCommand(s, false);
         return dummy;
     }
@@ -71,9 +70,18 @@ public class JsonController {
 
     @RequestMapping(value = "/getStatus", method = {RequestMethod.GET, RequestMethod.HEAD})
     public @ResponseBody
-    Light getStatus(@PathVariable("socket") String socket) {
-        // logger.info("Start getEmployee. ID="+empId);
+    Light getStatus(@RequestParam(value="socket") String socket) {
+        //logger.info("Start getEmployee. ID="+empId);
         Light dummy = new Light();
+        try {
+            Boolean status = gpioService.getLightStatus(Socket.find(socket));
+            dummy.setSocket(socket);
+            dummy.setStatus(status);
+        } catch (FileNotFoundException e) {
+
+        } catch (StatusException e) {
+
+        }
         return dummy;
     }
 

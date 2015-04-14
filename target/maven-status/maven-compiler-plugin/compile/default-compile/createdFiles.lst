@@ -1,6 +1,8 @@
 com/foulkes/lights/mvc/factory/CommandFactory.class
-com/foulkes/lights/mvc/service/GPIOServiceImpl.class
+com/foulkes/lights/mvc/service/exception/StatusException.class
 com/foulkes/lights/mvc/enums/Socket.class
+com/foulkes/lights/mvc/service/FileService.class
+com/foulkes/lights/mvc/service/FileService$1.class
 com/foulkes/lights/mvc/factory/CommandFactory$1.class
 com/foulkes/lights/mvc/models/GpioPins.class
 com/foulkes/lights/mvc/setup/AppConfig.class
@@ -9,5 +11,4 @@ com/foulkes/lights/mvc/controllers/JsonController.class
 com/foulkes/lights/mvc/models/Pin.class
 com/foulkes/lights/mvc/json/Light.class
 com/foulkes/lights/mvc/enums/Gpio.class
-com/foulkes/lights/mvc/service/PortService.class
 com/foulkes/lights/mvc/json/ServerStatus.class
