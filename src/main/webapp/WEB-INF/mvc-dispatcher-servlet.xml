@@ -33,7 +33,6 @@
     <bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
     </bean>
 
-    <bean id="gpioService" class="com.foulkes.lights.mvc.service.GPIOServiceImpl"></bean>
-
+    <bean id="gpioService" class="com.foulkes.lights.mvc.service.FileService"></bean>
 
 </beans>

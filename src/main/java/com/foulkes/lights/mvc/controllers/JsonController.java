@@ -26,6 +26,9 @@ public class JsonController {
     @Autowired
     private GPIOService gpioService;
 
+    //@Autowired
+    //private GPIOService gpioService;
+
     private CommandFactory commandFactory = new CommandFactory();
 
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.HEAD})
@@ -60,6 +63,7 @@ public class JsonController {
         // logger.info("Start getEmployee. ID="+empId);
         Light dummy = new Light();
         Socket s = Socket.find(socket);
+
         gpioService.executeCommand(s, false);
         return dummy;
     }
