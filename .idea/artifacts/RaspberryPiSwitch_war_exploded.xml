@@ -10,7 +10,6 @@
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.2" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.2" />
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.0.1" />
-          <element id="library" level="project" name="Maven: com.pi4j:pi4j-device:sources:1.0-DF" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.2.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.2.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.2.3" />
