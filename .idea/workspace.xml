@@ -36,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deploy.sh" pinned="false" current-in-tab="false">
+      <file leaf-file-name="deploy.sh" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/deploy.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.6" vertical-offset="0" max-vertical-offset="120">
-              <caret line="1" column="52" selection-start-line="1" selection-start-column="52" selection-end-line="1" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.04347826" vertical-offset="0" max-vertical-offset="690">
+              <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -86,10 +86,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileService.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FileService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/foulkes/lights/mvc/service/FileService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.73426574" vertical-offset="570" max-vertical-offset="1425">
+            <state vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="1425">
               <caret line="73" column="17" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -162,10 +162,10 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/foulkes/lights/mvc/controllers/JsonController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/deploy.sh" />
         <option value="$PROJECT_DIR$/src/main/java/com/foulkes/lights/mvc/service/GPIOService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/foulkes/lights/mvc/service/exception/StatusException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/foulkes/lights/mvc/service/FileService.java" />
+        <option value="$PROJECT_DIR$/deploy.sh" />
       </list>
     </option>
   </component>
@@ -1039,12 +1039,12 @@
       <workItem from="1427794707444" duration="17498000" />
       <workItem from="1428335397095" duration="10000" />
       <workItem from="1428506736085" duration="3131000" />
-      <workItem from="1429025205120" duration="5109000" />
+      <workItem from="1429025205120" duration="5478000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35904000" />
+    <option name="totallyTimeSpent" value="36273000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="38" width="1440" height="838" extended-state="0" />
@@ -1415,14 +1415,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deploy.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6" vertical-offset="0" max-vertical-offset="120">
-          <caret line="1" column="52" selection-start-line="1" selection-start-column="52" selection-end-line="1" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/foulkes/lights/mvc/service/GPIOService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="375">
@@ -1441,11 +1433,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/foulkes/lights/mvc/service/FileService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73426574" vertical-offset="570" max-vertical-offset="1425">
+        <state vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="1425">
           <caret line="73" column="17" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04347826" vertical-offset="0" max-vertical-offset="690">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
