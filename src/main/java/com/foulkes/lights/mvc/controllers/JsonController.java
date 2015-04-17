@@ -77,6 +77,8 @@ public class JsonController {
             Boolean status = gpioService.getLightStatus(Socket.find(socket));
             dummy.setSocket(socket);
             dummy.setStatus(status);
+            dummy.setCreatedOn(new Date());
+            dummy.setServerName(appConfig.getServerName());
         } catch (FileNotFoundException e) {
 
         } catch (StatusException e) {

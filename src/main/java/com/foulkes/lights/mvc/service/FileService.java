@@ -16,6 +16,7 @@ public class FileService implements GPIOService {
     File on;
     File off;
     File socket1;
+    File socket2;
     // Logger logger  = LogManager.getLogger(FileService.class);
 
     public FileService() {
@@ -23,6 +24,7 @@ public class FileService implements GPIOService {
         on = new File("/lights/outputFiles/on.txt");
         off = new File("/lights/outputFiles/off.txt");
         socket1 = new File("/lights/init.txt");
+        socket2 = new File("/lights/soc2.txt");
     }
 
     @Override
@@ -30,8 +32,31 @@ public class FileService implements GPIOService {
         switch (socket) {
             case SOC1:
                 return sendToSocket1(status);
+            case SOC2:
+                 return sendToSocket2(status);
             default:
                 return true;
+        }
+    }
+
+    public Boolean sendToSocket2(Boolean state) {
+
+        if (state) {
+            try {
+                FileCopyUtils.copy(on, socket2);
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return true;
+            }
+        } else {
+            try {
+                FileCopyUtils.copy(off, socket2);
+                return false;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
         }
     }
 
