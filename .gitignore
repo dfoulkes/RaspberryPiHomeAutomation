@@ -1,0 +1,4 @@
+/.idea/*
+/common/target/*
+/lightService/target/*
+/web/target/*
