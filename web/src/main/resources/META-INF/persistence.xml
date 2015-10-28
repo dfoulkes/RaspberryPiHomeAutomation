@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-	
+
 	<persistence-unit name="sharedDomain" transaction-type="RESOURCE_LOCAL">
-	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-	<class>com.foulkes.shared.domain.User</class>
-	<class>com.foulkes.shared.domain.Catalogue</class>
-	<class>com.foulkes.shared.domain.Company</class>
-	<class>com.foulkes.shared.domain.Transaction</class>
-	<class>com.foulkes.shared.domain.Tag</class>
-	<class>com.foulkes.shared.domain.UserRole</class>
-	<class>com.foulkes.shared.domain.Budget</class>
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>com.foulkes.lights.common.domain.Schedule</class>
+		<class>com.foulkes.lights.common.domain.Components</class>
+		<class>com.foulkes.lights.common.domain.ManagedDevice</class>
 		<properties>
 			<property name="eclipselink.jdbc.batch-writing" value="JDBC"/>
 			<property name="eclipselink.jdbc.cache-statements" value="false"/>
 			<property name="eclipselink.jdbc.native-sql" value="true"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="javax.persistence.jdbc.password" value="coolrunnings"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.1.240:3306/SharedFinances"/>
-            <!--<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/SharedFinances"/>-->
-            <!--<property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.1.240:3306/SharedFinances"/>-->
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.1.240:3306/HomeAutomation"/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<!--<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/> -->
-		<property name="eclipselink.ddl-generation" value="create-or-extend-tables"/> 
-		<!-- 		<property name="eclipselink.ddl-generation.output-mode" value="database"/>-->
-	<!-- 		<property name="eclipselink.application-location" value="/Users/danfoulkes2/Documents/software"/>  -->
+			<property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+			<!-- 		<property name="eclipselink.ddl-generation.output-mode" value="database"/>-->
+			<!-- 		<property name="eclipselink.application-location" value="/Users/danfoulkes2/Documents/software"/>  -->
 		</properties>
 	</persistence-unit>
 </persistence>

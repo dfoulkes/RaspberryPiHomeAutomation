@@ -49,8 +49,8 @@ public class LightTransformer {
                                order.getServiceTypes() });
 
         return new LightEvent(order.getIp(), order.getEventState(),
-                                   order.getServiceTypes(),
-                                   order.getAddressDetails());
+                order.getServiceTypes(),
+                "SOC1");
 	}
 
 }

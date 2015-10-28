@@ -22,6 +22,7 @@ public class Components {
     private ServiceTypes componentType;
     private String ip;
     private Boolean assigned;
+    private String addressDetails;
 
     public Components(String uniqueId, ServiceTypes componentType, String ip){
         this.uniquieId = uniqueId;
@@ -31,6 +32,14 @@ public class Components {
 
     public Components(){
 
+    }
+
+    public String getAddressDetails() {
+        return addressDetails;
+    }
+
+    public void setAddressDetails(String addressDetails) {
+        this.addressDetails = addressDetails;
     }
 
     public void setUniquieId(String uniquieId) {
@@ -71,6 +80,7 @@ public class Components {
         cm.setComponentType(components.getComponentType());
         cm.setIp(components.getIp());
         cm.setAssigned(components.getAssigned());
+        cm.setAddressDetails(components.getAddressDetails());
         return cm;
     }
 }

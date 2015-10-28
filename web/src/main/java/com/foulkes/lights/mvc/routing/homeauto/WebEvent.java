@@ -16,20 +16,21 @@
 
 package com.foulkes.lights.mvc.routing.homeauto;
 
+import com.foulkes.lights.mvc.routing.event.EventState;
 import org.springframework.integration.annotation.Gateway;
 
 /**
  * The entry point for the 
  * homeauto order flow.
- * 
+ *
  * @author David Winterfeldt
  */
 public interface WebEvent {
 
-    /**
-     * Process a homeauto order.
-     */
-	@Gateway(requestChannel="processOrder")
-	public void process(ComponentEvent order);
+	/**
+	 * Process a homeauto order.
+	 */
+	@Gateway(requestChannel="processOrder", replyChannel = "processResponse")
+	public EventState process(ComponentEvent order);
 
 }

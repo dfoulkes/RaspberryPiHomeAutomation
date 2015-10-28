@@ -1,107 +1,94 @@
 package com.foulkes.lights.mvc.controllers;
 
-import com.foulkes.lights.mvc.enums.Socket;
-import com.foulkes.lights.mvc.factory.CommandFactory;
-import com.foulkes.lights.mvc.json.Light;
-import com.foulkes.lights.mvc.json.ServerStatus;
-import com.foulkes.lights.mvc.service.GPIOService;
-import com.foulkes.lights.mvc.service.exception.StatusException;
-import com.foulkes.lights.mvc.setup.AppConfig;
+import com.foulkes.lights.common.exception.NotFound;
+import com.foulkes.lights.common.json.ComponentsJson;
+import com.foulkes.lights.common.json.ManagedDeviceJson;
+import com.foulkes.lights.common.model.ComponentsModel;
+import com.foulkes.lights.common.model.ManagedDeviceModel;
+import com.foulkes.lights.mvc.routing.homeauto.ComponentEvent;
+import com.foulkes.lights.mvc.routing.homeauto.WebEvent;
+import com.foulkes.lights.mvc.routing.event.ComponentAction;
+import com.foulkes.lights.mvc.routing.event.EventState;
+import com.foulkes.lights.mvc.service.ComponentService;
+import com.foulkes.lights.mvc.service.ManagedDeviceService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.FileNotFoundException;
-import java.util.Date;
+import java.util.List;
 
-@Controller
+
+@RestController
 public class JsonController {
 
 
     @Autowired
-    private AppConfig appConfig;
-
+    private ComponentService componentService;
     @Autowired
-    private GPIOService gpioService;
+    private ManagedDeviceService managedDeviceService;
+    @Autowired
+    private WebEvent order;
 
-    //@Autowired
-    //private GPIOService gpioService;
 
-    private CommandFactory commandFactory = new CommandFactory();
 
-    @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.HEAD})
-	public String printWelcome(ModelMap model) {
-		model.addAttribute("message", "Hello world!");
-		return "lightControl";
-	}
+    private Logger logger = Logger.getLogger(JsonController.class);
+
 
     /**
-     * Turn On a Light switch
-     * @param socket
+     * Call the spring integration gateway with the component event
+     * @param status
+     * @param componentId
      * @return
      */
-    @RequestMapping(value = "/turnOn", method = {RequestMethod.GET, RequestMethod.HEAD})
-    public @ResponseBody
-    Light turnOn(@RequestParam(value="socket") String socket) {
-       // logger.info("Start getEmployee. ID="+empId);
-        Light dummy = new Light();
-        Socket soc = Socket.find(socket);
-        dummy.setSocket(soc.name());
-        gpioService.executeCommand(soc,true);
-        dummy.setSocket(socket);
-        dummy.setStatus(true);
-        return dummy;
-    }
+    @RequestMapping("/setComponent.json")
+    public EventState getComponentData(@RequestParam String status, @RequestParam String componentId) {
+        logger.info("calling json");
 
-    /**
-     * Turn Off a Light switch
-     * @param socket
-     * @return
-     */
-    @RequestMapping(value = "/turnOff", method = {RequestMethod.GET, RequestMethod.HEAD})
-    public @ResponseBody
-    Light turnOff(@RequestParam(value="socket") String socket) {
-        // logger.info("Start getEmployee. ID="+empId);
-        Light dummy = new Light();
-        Socket s = Socket.find(socket);
-        gpioService.executeCommand(s, false);
-        dummy.setSocket(socket);
-        dummy.setStatus(false);
-        return dummy;
-    }
-
-
-    @RequestMapping(value = "/getStatus", method = {RequestMethod.GET, RequestMethod.HEAD})
-    public @ResponseBody
-    Light getStatus(@RequestParam(value="socket") String socket) {
-        //logger.info("Start getEmployee. ID="+empId);
-        Light dummy = new Light();
-        try {
-            Boolean status = gpioService.getLightStatus(Socket.find(socket));
-            dummy.setSocket(socket);
-            dummy.setStatus(status);
-            dummy.setCreatedOn(new Date());
-            dummy.setServerName(appConfig.getServerName());
-        } catch (FileNotFoundException e) {
-
-        } catch (StatusException e) {
-
+        EventState state;
+        if(status.compareTo("ON") == 0){
+            state= EventState.ON;
         }
-        return dummy;
+        else{
+            state= EventState.OFF;
+        }
+        ComponentAction action = new ComponentAction();
+        action.setState(state);
+        action.setComponentId(componentId);
+
+        try {
+            ComponentsModel com = componentService.getById(componentId);
+            ComponentEvent message = new ComponentEvent(com.getIp(), state, com.getComponentType(), com.getAddressDetails());
+            EventState x = order.process(message);
+            state = x;
+        } catch (NotFound notFound) {
+            notFound.printStackTrace();
+        }
+
+        return state;
     }
 
 
-    @RequestMapping(value = "/getServerStatus", method = {RequestMethod.GET, RequestMethod.HEAD})
-    public @ResponseBody
-    ServerStatus getServerDetails() {
-        // logger.info("Start getEmployee. ID="+empId);
-        ServerStatus dummy = new ServerStatus();
-        dummy.setCreatedOn(new Date());
-        dummy.setServerName(appConfig.getServerName());
-        dummy.setDisplayName(appConfig.getDisplayName());
-        dummy.setActive(true);
-        return dummy;
+
+    @RequestMapping("/getAllComponents.json")
+    public ComponentsJson getComponentData() {
+        logger.info("calling json");
+        List<ComponentsModel> coms = componentService.getAll();
+        ComponentsJson finalList = new ComponentsJson();
+        for(ComponentsModel i : coms){
+            finalList.add(i);
+        }
+        return finalList;
+    }
+
+    @RequestMapping("/getDevices.json")
+    public ManagedDeviceJson getDevicesData() {
+        logger.info("calling json");
+        List<ManagedDeviceModel> coms = managedDeviceService.getAll();
+        ManagedDeviceJson finalList = new ManagedDeviceJson();
+        for(ManagedDeviceModel i : coms){
+            finalList.add(i);
+        }
+        return finalList;
     }
 
 }

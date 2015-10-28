@@ -3,7 +3,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-       <bean class="com.foulkes.lights.mvc.doa.ScheduleDao" id="scheduleDao"/>
 
+
+       <!--<bean class="com.foulkes.lights.mvc.service.ComponentServiceImpl" id="componentService"/>-->
+       <!--<bean class="com.foulkes.lights.mvc.service.ManagedDeviceServiceImpl" id="managedDeviceService" />-->
+
+       <!--<bean class="com.foulkes.lights.common.doa.ScheduleDao" id="scheduleDao"/>-->
+       <!--<bean class="com.foulkes.lights.common.doa.ManageDeviceServiceDao" id="deviceServiceDao"/>-->
+       <!--<bean class="com.foulkes.lights.common.doa.ComponantDao" id="componantDao"/>-->
 
 </beans>

@@ -7,7 +7,13 @@
 
 
 
-    <servlet>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/doa.xml,/WEB-INF/schedule.xml,/WEB-INF/routing-context.xml</param-value>
+	</context-param>
+
+
+	<servlet>
 		<servlet-name>mvc-dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 

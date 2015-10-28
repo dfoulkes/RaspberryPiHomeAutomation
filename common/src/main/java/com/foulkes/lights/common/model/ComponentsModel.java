@@ -9,13 +9,23 @@ import java.io.Serializable;
  * Created by danfoulkes on 03/10/15.
  */
 public class ComponentsModel implements Serializable{
+    private static final long serialVersionUID = 5464166116243968076L;
     private String uniquieId;
     private ServiceTypes componentType;
     private Boolean assigned;
+    private String addressDetails;
     private String ip;
 
     public ComponentsModel(){
 
+    }
+
+    public String getAddressDetails() {
+        return addressDetails;
+    }
+
+    public void setAddressDetails(String addressDetails) {
+        this.addressDetails = addressDetails;
     }
 
     public String getIp() {
@@ -56,6 +66,7 @@ public class ComponentsModel implements Serializable{
         c.setUniquieId(model.getUniquieId());
         c.setComponentType(model.getComponentType());
         c.setIp(model.getIp());
+        c.setAddressDetails(model.getAddressDetails());
         return c;
     }
 

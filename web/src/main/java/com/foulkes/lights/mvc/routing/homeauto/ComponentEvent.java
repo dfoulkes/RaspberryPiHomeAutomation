@@ -21,7 +21,7 @@ import com.foulkes.lights.mvc.routing.event.EventState;
 
 /**
  * Book order information.
- * 
+ *
  * @author David Winterfeldt
  */
 public class ComponentEvent {
@@ -30,14 +30,24 @@ public class ComponentEvent {
     private final String ip;
     private final EventState eventState;
     private final ServiceTypes componentType;
+    private final String address;
 
     /**
      * Constructor
      */
-    public ComponentEvent(String ip, EventState eventState, ServiceTypes serviceTypes) {
+    public ComponentEvent(String ip, EventState eventState, ServiceTypes serviceTypes, String address) {
         this.ip = ip;
         this.eventState = eventState;
         this.componentType = serviceTypes;
+        this.address = address;
+    }
+
+    public ServiceTypes getComponentType() {
+        return componentType;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     /**

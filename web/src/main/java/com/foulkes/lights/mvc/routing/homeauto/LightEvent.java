@@ -26,7 +26,7 @@ import com.foulkes.lights.mvc.routing.event.EventState;
  */
 public class LightEvent extends ComponentEvent {
 
-    private final String address;
+    public final String address;
 
     /**
      * Constructor
@@ -37,11 +37,12 @@ public class LightEvent extends ComponentEvent {
         this.address = address;
     }
 
-    /**
-     * Gets address.
-     */
     public String getAddress() {
         return address;
     }
+
+    /**
+     * Gets address.
+     */
 
 }

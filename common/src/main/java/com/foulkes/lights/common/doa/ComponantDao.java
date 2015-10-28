@@ -6,11 +6,10 @@ import com.foulkes.lights.common.exception.FailedToAdd;
 import com.foulkes.lights.common.exception.NotFound;
 import com.foulkes.lights.common.exception.AlreadyExists;
 import com.foulkes.lights.common.model.ComponentsModel;
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.NoResultException;
 import java.util.List;
+import org.apache.log4j.Logger;
 
 /**
  * Created by danfoulkes on 03/10/15.

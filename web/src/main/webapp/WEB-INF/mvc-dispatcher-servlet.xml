@@ -11,7 +11,12 @@
     <!-- Enables the Spring MVC @Controller programming model -->
     <mvc:annotation-driven />
 
-    <context:component-scan base-package="com.foulkes.lights.mvc.*"/>
+    <import resource="doa.xml"/>
+    <import resource="routing-context.xml"/>
+    <import resource="schedule.xml"/>
+
+
+    <context:component-scan base-package="com.foulkes.lights.**"/>
 
     <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
 
@@ -33,6 +38,6 @@
     <bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
     </bean>
 
-    <bean id="gpioService" class="com.foulkes.lights.mvc.service.FileService"></bean>
+    <bean id="gpioService" class="com.foulkes.lights.common.service.FileService"></bean>
 
 </beans>

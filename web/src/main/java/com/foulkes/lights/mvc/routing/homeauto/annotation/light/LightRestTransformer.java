@@ -18,6 +18,7 @@ package com.foulkes.lights.mvc.routing.homeauto.annotation.light;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.foulkes.lights.common.json.Light;
+
 import com.foulkes.lights.mvc.routing.event.EventState;
 import com.foulkes.lights.mvc.routing.homeauto.ComponentEvent;
 import com.foulkes.lights.mvc.routing.homeauto.LightEvent;
@@ -69,10 +70,8 @@ public class LightRestTransformer {
         Light lightResponse = mapper.readValue(JsonResponse, Light.class);
         EventState returnState = (lightResponse.getStatus() ? EventState.ON : EventState.OFF);
             //create the return message
-        ComponentEvent rtn = new ComponentEvent(order.getIp(), returnState, order.getServiceTypes(), order.getAddressDetails());
+        ComponentEvent rtn = new ComponentEvent(order.getIp(), returnState, order.getServiceTypes(), order.getAddress());
         return rtn;
-
-
 	}
 
 }
