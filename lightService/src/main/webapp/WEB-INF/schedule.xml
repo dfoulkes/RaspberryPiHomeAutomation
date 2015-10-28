@@ -12,10 +12,9 @@
     <bean id="updateParent" class="com.foulkes.lights.mvc.endpoints.UpdateParent">
     </bean>
 
-    <!-- For times when you just need to invoke a method on a specific object -->
     <bean id="simpleJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject" ref="updateParent" />
-        <property name="targetMethod" value="call" />
+        <property name="targetMethod" value="execute" />
     </bean>
 
     <!-- Run the job every 2 seconds with initial delay of 1 second -->
@@ -25,5 +24,20 @@
         <property name="repeatInterval" value="2000" />
     </bean>
 
+    <!-- Scheduler factory bean to glue together jobDetails and triggers to Configure Quartz Scheduler -->
+    <bean  class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobDetails">
+            <list>
+                <ref bean="simpleJobDetail" />
+            </list>
+        </property>
 
-    </beans>
+        <property name="triggers">
+            <list>
+                <ref bean="simpleTrigger" />
+            </list>
+        </property>
+    </bean>
+
+
+</beans>
