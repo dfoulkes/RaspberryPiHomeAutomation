@@ -48,7 +48,7 @@ public class LightRestTransformer {
      */
 
     @Transformer(inputChannel="post", outputChannel="processResponse")
-	public ComponentEvent processMessage(Message<LightEvent> message) throws IOException {
+	public EventState processMessage(Message<LightEvent> message) throws IOException {
 		LightEvent order =  message.getPayload();
 
         String extention = (order.getEventState() == EventState.OFF?"turnOff" : "turnOn");
@@ -70,8 +70,7 @@ public class LightRestTransformer {
         Light lightResponse = mapper.readValue(JsonResponse, Light.class);
         EventState returnState = (lightResponse.getStatus() ? EventState.ON : EventState.OFF);
             //create the return message
-        ComponentEvent rtn = new ComponentEvent(order.getIp(), returnState, order.getServiceTypes(), order.getAddress());
-        return rtn;
+        return returnState;
 	}
 
 }

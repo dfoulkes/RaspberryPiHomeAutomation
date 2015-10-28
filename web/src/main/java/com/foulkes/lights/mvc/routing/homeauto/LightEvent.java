@@ -33,7 +33,7 @@ public class LightEvent extends ComponentEvent {
      */
     public LightEvent(String ip, EventState event,
                       ServiceTypes componentType, String address) {
-        super(ip, event, componentType);
+        super(ip, event, componentType, address);
         this.address = address;
     }
 

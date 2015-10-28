@@ -50,7 +50,7 @@ public class LightTransformer {
 
         return new LightEvent(order.getIp(), order.getEventState(),
                 order.getServiceTypes(),
-                "SOC1");
+                order.getAddress());
 	}
 
 }
