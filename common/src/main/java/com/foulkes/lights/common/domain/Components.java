@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Table(name="Components")
 @NamedQueries(value = {
         @NamedQuery(name = "Components.getAll", query = "SELECT components FROM Components components"),
-        @NamedQuery(name = "Components.getById", query = "SELECT components FROM Components components WHERE components.uniquieId = :id"),
+        @NamedQuery(name = "Components.getById", query = "SELECT components FROM Components components WHERE components.uniquieId = :id AND components.addressDetails =  :address"),
 })
 public class Components {
 
@@ -22,6 +22,7 @@ public class Components {
     private ServiceTypes componentType;
     private String ip;
     private Boolean assigned;
+    @Id
     private String addressDetails;
 
     public Components(String uniqueId, ServiceTypes componentType, String ip){

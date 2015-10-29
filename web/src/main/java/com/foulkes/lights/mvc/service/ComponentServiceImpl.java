@@ -42,25 +42,35 @@ public class ComponentServiceImpl implements ComponentService
     }
 
     @Override
-    public ComponentsModel getById(String uniqueId) throws NotFound {
+    public ComponentsModel getById(String uniqueId, String address) throws NotFound {
         try {
-            return ComponentsModel.build(componantDao.getById(uniqueId));
+            return ComponentsModel.build(componantDao.getById(uniqueId, address));
         }catch (Exception e){
             throw new NotFound();
         }
     }
 
     @Override
-    public ComponentsModel add(String uniqueId, ServiceTypes type, String ip) throws AlreadyExists, FailedToAdd {
+    public ComponentsModel add(String uniqueId, ServiceTypes type, String ip, String address) throws AlreadyExists, FailedToAdd {
        //check if the device exists if so then update the ip address
         try {
 
-            ComponentsModel c = update(ComponentsModel.build(componantDao.getById(uniqueId)));
+            ComponentsModel c = ComponentsModel.build(componantDao.getById(uniqueId, address));
+            c.setIp(ip);
+            c.setComponentType(type);
+            c.setUniquieId(uniqueId);
+            c.setAddressDetails(address);
             logger.info("updated component "+c.getUniquieId()+" @ "+c.getIp());
-            return c;
+
+            if(componantDao.getById(c.getUniquieId(), address) != null){
+               return update(c);
+            }
+            else{
+                return componantDao.add(uniqueId,type,ip, address);
+            }
         } catch (NotFound notFound) {
             logger.info("adding new");
-            return componantDao.add(uniqueId,type,ip);
+            return componantDao.add(uniqueId,type,ip, address);
         }catch(Exception e){
             logger.error(e.getMessage());
             throw new FailedToAdd();
@@ -70,7 +80,7 @@ public class ComponentServiceImpl implements ComponentService
 
     @Override
     public ComponentsModel update(ComponentsModel componentsModel) throws FailedToAdd {
-            return componantDao.update(componentsModel);
+        return componantDao.update(componentsModel);
 
     }
 

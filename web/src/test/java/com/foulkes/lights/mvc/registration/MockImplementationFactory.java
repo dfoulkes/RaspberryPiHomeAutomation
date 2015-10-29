@@ -8,7 +8,7 @@ import com.foulkes.lights.common.interfaces.ComponentInterface;
 import com.foulkes.lights.common.model.ComponentsModel;
 import com.foulkes.lights.common.model.ManagedDeviceModel;
 import com.foulkes.lights.mvc.controllers.RegisterController;
-import com.foulkes.lights.mvc.enums.RegistrationStatus;
+import com.foulkes.lights.common.enums.RegistrationStatus;
 
 import com.foulkes.lights.mvc.service.*;
 import org.junit.Test;
@@ -34,14 +34,14 @@ public class MockImplementationFactory {
         RegisterController mockReg = mock(RegisterController.class);
         ComponentService componentService = mock(ComponentServiceImpl.class);
 
-        when(mockReg.registerComponent(UNIQUE_ID,ServiceTypes.LIGHT, "192.168.1.198")).thenReturn(RegistrationStatus.OK);
-        when(componentService.getById(UNIQUE_ID)).thenReturn(demo);
+        when(mockReg.registerComponent(UNIQUE_ID,ServiceTypes.LIGHT, "192.168.1.198", "SOC1")).thenReturn(RegistrationStatus.OK);
+        when(componentService.getById(UNIQUE_ID,"SOC1")).thenReturn(demo);
 
 
         //service registered
-        assertEquals(mockReg.registerComponent(UNIQUE_ID,ServiceTypes.LIGHT, "192.168.1.198"), RegistrationStatus.OK);
-        assertEquals(componentService.getById(UNIQUE_ID).getUniquieId(), demo.getUniquieId());
-        assertEquals(componentService.getById(UNIQUE_ID).getComponentType(), ServiceTypes.LIGHT);
+        assertEquals(mockReg.registerComponent(UNIQUE_ID,ServiceTypes.LIGHT, "192.168.1.198", "SOC1"), RegistrationStatus.OK);
+        assertEquals(componentService.getById(UNIQUE_ID,"SOC1").getUniquieId(), demo.getUniquieId());
+        assertEquals(componentService.getById(UNIQUE_ID,"SOC1").getComponentType(), ServiceTypes.LIGHT);
     }
 
     @Test

@@ -24,6 +24,50 @@ public class AppConfig {
     @Value("${server.version}")
     String version;
 
+    @Value("${server.url}")
+    String serverUrl;
+
+    @Value("${server.port}")
+    String serverPort;
+
+    @Value("${server.projectName}")
+    String projectName;
+
+    @Value("${component.id}")
+    String componentId;
+
+
+    public String getComponentId() {
+        return componentId;
+    }
+
+    public void setComponentId(String componentId) {
+        this.componentId = componentId;
+    }
+
+    public String getServerUrl() {
+        return serverUrl;
+    }
+
+    public void setServerUrl(String serverUrl) {
+        this.serverUrl = serverUrl;
+    }
+
+    public String getServerPort() {
+        return serverPort;
+    }
+
+    public void setServerPort(String serverPort) {
+        this.serverPort = serverPort;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
 
     public String getServerName() {
         return serverName;

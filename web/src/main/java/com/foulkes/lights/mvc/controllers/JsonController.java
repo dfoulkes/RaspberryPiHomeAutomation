@@ -41,7 +41,7 @@ public class JsonController {
      * @return
      */
     @RequestMapping("/setComponent.json")
-    public EventState getComponentData(@RequestParam String status, @RequestParam String componentId) {
+    public EventState getComponentData(@RequestParam String status, @RequestParam String componentId, @RequestParam String subcommand) {
         logger.info("calling json");
 
         EventState state;
@@ -56,7 +56,7 @@ public class JsonController {
         action.setComponentId(componentId);
 
         try {
-            ComponentsModel com = componentService.getById(componentId);
+            ComponentsModel com = componentService.getById(componentId, subcommand);
             ComponentEvent message = new ComponentEvent(com.getIp(), state, com.getComponentType(), com.getAddressDetails());
             EventState x = order.process(message);
             state = x;

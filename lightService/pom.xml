@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>war</packaging>
     <groupId>com.foulkes.homeAutomation</groupId>
-    <artifactId>webservice</artifactId>
+    <artifactId>lightService</artifactId>
 
 
     <dependencies>
@@ -39,7 +39,25 @@
             <version>${spring.version}</version>
         </dependency>
 
+
+        <!-- Jackson JSON Mapper -->
+
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>1.8</version>
+        </dependency>
+
     </dependencies>
+
 
 
     <profiles>
@@ -49,10 +67,10 @@
         <profile>
             <id>dev</id>
             <properties>
-                <rp.build.warname>webservice</rp.build.warname>
+                <rp.build.warname>lightService</rp.build.warname>
             </properties>
             <build>
-                <finalName>webservice</finalName>
+                <finalName>lightService</finalName>
                 <plugins>
                     <plugin>
                         <artifactId>maven-antrun-plugin</artifactId>
@@ -89,10 +107,10 @@
         <profile>
             <id>prod</id>
             <properties>
-                <rp.build.warname>webservice</rp.build.warname>
+                <rp.build.warname>lightService</rp.build.warname>
             </properties>
             <build>
-                <finalName>webservice</finalName>
+                <finalName>lightService</finalName>
                 <plugins>
                     <plugin>
                         <artifactId>maven-antrun-plugin</artifactId>
@@ -125,4 +143,32 @@
         </profile>
 
     </profiles>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.openejb.maven</groupId>
+                <artifactId>tomee-maven-plugin</artifactId>
+                <version>1.7.1</version>
+                <configuration>
+                    <tomeeVersion>1.7.1</tomeeVersion>
+                    <tomeeClassifier>plus</tomeeClassifier>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>http://localhost:8080/manager/text</url>
+                    <server>LivingRoomServer</server>
+                    <path>/lightService</path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
 </project>

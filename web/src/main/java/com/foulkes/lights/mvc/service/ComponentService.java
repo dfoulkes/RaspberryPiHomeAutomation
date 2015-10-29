@@ -17,7 +17,7 @@ import java.util.List;
 public interface ComponentService {
 
      List<ComponentsModel> getAll();
-     ComponentsModel getById(String uniqueId) throws NotFound;
-     ComponentsModel add(String uniqueId, ServiceTypes type, String ip) throws AlreadyExists, FailedToAdd;
+     ComponentsModel getById(String uniqueId, String address) throws NotFound;
+     ComponentsModel add(String uniqueId, ServiceTypes type, String ip, String address) throws AlreadyExists, FailedToAdd;
      ComponentsModel update(ComponentsModel componentsModel) throws FailedToAdd;
 }

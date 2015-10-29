@@ -19,10 +19,10 @@ public class ComponantDao extends DaoInstance{
 
     private Logger logger = Logger.getLogger(ComponantDao.class);
 
-    public ComponentsModel add(String id, ServiceTypes componentType, String ip) throws AlreadyExists, FailedToAdd {
+    public ComponentsModel add(String id, ServiceTypes componentType, String ip, String address) throws AlreadyExists, FailedToAdd {
 
         try {
-            if(getById(id) != null){
+            if(getById(id, address) != null){
                 throw new AlreadyExists();
             }
         } catch (NotFound notFound) {
@@ -34,6 +34,7 @@ public class ComponantDao extends DaoInstance{
             com.setUniquieId(id);
             com.setAssigned(false);
             com.setComponentType(componentType);
+            com.setAddressDetails(address);
             com.setIp(ip);
             getEntityManager().getTransaction().begin();
             getEntityManager().persist(com);
@@ -56,10 +57,10 @@ public class ComponantDao extends DaoInstance{
      * @return
      * @throws NotFound
      */
-    public Components getById(String uniqueId) throws NotFound{
+    public Components getById(String uniqueId, String address) throws NotFound{
 
         try {
-            return getEntityManager().createNamedQuery("Components.getById", Components.class).setParameter("id", uniqueId).getSingleResult();
+            return getEntityManager().createNamedQuery("Components.getById", Components.class).setParameter("id", uniqueId).setParameter("address",address).getSingleResult();
         }catch (NoResultException e){
             logger.info("record not found for:"+uniqueId);
             throw new NotFound();
