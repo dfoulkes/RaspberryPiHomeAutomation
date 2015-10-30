@@ -1,6 +1,5 @@
 package com.foulkes.lights.common.service;
 
-;
 import com.foulkes.lights.common.exception.StatusException;
 import org.springframework.util.FileCopyUtils;
 import com.foulkes.lights.common.enums.Socket;

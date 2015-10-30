@@ -5,5 +5,5 @@ package com.foulkes.lights.mvc.routing.event;
  */
 public enum EventState {
 
-    ON, OFF;
+    ON, OFF
 }

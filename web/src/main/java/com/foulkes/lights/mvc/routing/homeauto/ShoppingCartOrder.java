@@ -30,6 +30,6 @@ public interface ShoppingCartOrder {
      * Process a shopping cart order.
      */
 	@Gateway(requestChannel="shoppingCartOrder")
-	public void process(ShoppingCart shoppingCart);
+    void process(ShoppingCart shoppingCart);
 
 }

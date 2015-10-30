@@ -13,9 +13,9 @@ import java.io.FileNotFoundException;
 @Service
 public interface GPIOService {
 
-    public Boolean executeCommand(Socket socket, Boolean status);
+    Boolean executeCommand(Socket socket, Boolean status);
 
-    public Boolean getLightStatus(Socket soc) throws FileNotFoundException, StatusException;
+    Boolean getLightStatus(Socket soc) throws FileNotFoundException, StatusException;
 
 }
 

@@ -31,6 +31,6 @@ public interface WebEvent {
 	 * Process a homeauto order.
 	 */
 	@Gateway(requestChannel="processOrder", replyChannel = "processResponse")
-	public EventState process(ComponentEvent order);
+	EventState process(ComponentEvent order);
 
 }

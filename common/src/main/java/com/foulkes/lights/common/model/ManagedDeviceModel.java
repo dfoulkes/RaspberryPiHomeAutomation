@@ -53,6 +53,6 @@ public class ManagedDeviceModel implements Serializable{
         ComponentsModel com = ComponentsModel.build(mod.getComponents());
         managedDevice.setComponentsModel(ImplementationFactory.getInstance(com.getIp(), com.getComponentType()));
         managedDevice.setEntity(mod.getEntity());
-        return managedDevice.build(mod);
+        return build(mod);
     }
 }
