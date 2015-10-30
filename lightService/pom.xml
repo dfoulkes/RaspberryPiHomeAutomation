@@ -56,6 +56,12 @@
             <version>1.8</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>1.8</version>
+        </dependency>
+
     </dependencies>
 
 
@@ -154,19 +160,10 @@
                 <configuration>
                     <tomeeVersion>1.7.1</tomeeVersion>
                     <tomeeClassifier>plus</tomeeClassifier>
+                    <tomeeHost>192.168.1.249</tomeeHost>
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <url>http://localhost:8080/manager/text</url>
-                    <server>LivingRoomServer</server>
-                    <path>/lightService</path>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 

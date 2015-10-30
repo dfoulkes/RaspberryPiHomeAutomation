@@ -13,8 +13,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.net.Inet4Address;
-import java.net.UnknownHostException;
+import java.net.*;
+import java.util.Enumeration;
 
 /**
  * Created by danfoulkes on 24/10/2015.
@@ -26,11 +26,36 @@ public class UpdateParent{
     @Autowired
     private AppConfig appConifg;
 
+
+    //find active ip address
+    private String currentIp(){
+        String ip = "";
+        try {
+            Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+            while (interfaces.hasMoreElements()) {
+                NetworkInterface iface = interfaces.nextElement();
+                // filters out 127.0.0.1 and inactive interfaces
+                if (iface.isLoopback() || !iface.isUp())
+                    continue;
+
+                Enumeration<InetAddress> addresses = iface.getInetAddresses();
+                while(addresses.hasMoreElements()) {
+                    InetAddress addr = addresses.nextElement();
+                    ip = addr.getHostAddress();
+                    System.out.println(iface.getDisplayName() + " " + ip);
+                }
+            }
+        } catch (SocketException e) {
+            throw new RuntimeException(e);
+        }
+        return ip;
+    }
+
     public void execute() throws UnknownHostException {
 
         logger.info("updating server");
 
-        String currentIp = Inet4Address.getLocalHost().getHostAddress();
+        String currentIp = currentIp();
 
         Client client = Client.create();
 
@@ -41,11 +66,11 @@ public class UpdateParent{
             String soc= "";
 
             if(counter == 1){
-                soc = "SOC1";
+                soc = "1";
             }
             else if(counter == 2)
             {
-                soc = "SOC2";
+                soc = "2";
             }
 
             String url = "http://" + appConifg.getServerUrl() + ":" + appConifg.getServerPort() + "/" + appConifg.getProjectName() + "/register?componentId=" + appConifg.getComponentId() + "&type=" + ServiceTypes.LIGHT + "&ip=" + currentIp + "&address="+soc;

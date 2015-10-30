@@ -53,8 +53,10 @@ public class LightRestTransformer {
 
         String extention = (order.getEventState() == EventState.OFF?"turnOff" : "turnOn");
         Client client = Client.create();
+
+        logger.info("calling server:"+"http://"+order.getIp()+":8080/lightService/"+extention+"?socket="+order.getAddress());
         WebResource webResource = client
-                .resource("http://"+order.getIp()+":8080/webservice/"+extention+"?socket="+order.getAddress());
+                .resource("http://"+order.getIp()+":8080/lightService/"+extention+"?socket="+order.getAddress());
 
         ClientResponse response = webResource.accept("application/json")
                 .get(ClientResponse.class);
