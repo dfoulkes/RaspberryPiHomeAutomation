@@ -4,3 +4,4 @@
 /lightService/target/*
 /web/target/*
 /web/src/main/resources/META-INF/persistence.xml
+/web/target
