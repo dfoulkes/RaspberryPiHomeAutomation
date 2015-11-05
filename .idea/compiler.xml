@@ -37,7 +37,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="web" />
       </profile>
       <profile default="false" name="Annotation profile for common" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -46,12 +45,26 @@
         <processorPath useClasspath="true" />
         <module name="common" />
       </profile>
+      <profile default="false" name="Annotation profile for core" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Annotation profile for web (1)" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="common" target="1.7" />
+      <module name="core" target="1.7" />
       <module name="lightService" target="1.7" />
       <module name="RaspberryPiSwitch" target="1.7" />
       <module name="web" target="1.7" />
+      <module name="web (1)" target="1.7" />
       <module name="webservice" target="1.7" />
     </bytecodeTargetLevel>
   </component>
