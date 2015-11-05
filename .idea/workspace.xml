@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="93d7ce13-174e-469e-895a-2d84139e9fae" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="RaspberryPiSwitch.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1578,12 +1579,12 @@
       <workItem from="1445788248368" duration="98000" />
       <workItem from="1445804685381" duration="26570000" />
       <workItem from="1446100066942" duration="6582000" />
-      <workItem from="1446242109177" duration="6409000" />
+      <workItem from="1446242109177" duration="6577000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="241048000" />
+    <option name="totallyTimeSpent" value="241216000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
