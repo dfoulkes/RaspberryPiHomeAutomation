@@ -17,4 +17,15 @@ public class HomeController {
     public String homePage(ModelMap model) {
         return "home";
     }
+
+
+    @RequestMapping(value = "/dashboard", method = {RequestMethod.GET})
+    public String dashboardPage(ModelMap model) {
+        return "dashboard";
+    }
+
+    @RequestMapping(value = "/manage", method = {RequestMethod.GET})
+    public String managePage(ModelMap model) {
+        return "dashboard";
+    }
 }
