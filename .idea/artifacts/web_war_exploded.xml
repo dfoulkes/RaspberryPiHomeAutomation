@@ -48,7 +48,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/web/target/web/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="core/web/Web" />
+      <element id="javaee-facet-resources" facet="web/web/Web" />
     </root>
   </artifact>
 </component>
