@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RaspberryPiSwitch.iml" filepath="$PROJECT_DIR$/RaspberryPiSwitch.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/lightService/lightService.iml" filepath="$PROJECT_DIR$/lightService/lightService.iml" />
       <module fileurl="file://$USER_HOME$/Library/Mobile Documents/com~apple~CloudDocs/Workspace/RaspberryPiSwitch/webservice/lightService.iml" filepath="$USER_HOME$/Library/Mobile Documents/com~apple~CloudDocs/Workspace/RaspberryPiSwitch/webservice/lightService.iml" />
       <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />

@@ -47,5 +47,8 @@
     <outbound-channel-adapter channel="store" ref="camEndpoint" method="processMessage" />
     <!--<outbound-channel-adapter channel="processResponse" ref="componentReply" method="processMessage" />-->
 
+    <beans:bean class="com.sun.jersey.api.client.Client" name="client">
+
+    </beans:bean>
 
 </beans:beans>

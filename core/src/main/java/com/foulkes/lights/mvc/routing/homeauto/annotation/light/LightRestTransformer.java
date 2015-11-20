@@ -22,10 +22,12 @@ import com.foulkes.lights.common.json.Light;
 import com.foulkes.lights.mvc.routing.event.EventState;
 import com.foulkes.lights.mvc.routing.homeauto.ComponentEvent;
 import com.foulkes.lights.mvc.routing.homeauto.LightEvent;
+import com.foulkes.lights.mvc.setup.AppConfig;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.Transformer;
 import org.springframework.messaging.Message;
@@ -42,6 +44,11 @@ public class LightRestTransformer {
 
     final Logger logger = Logger.getLogger(LightRestTransformer.class);
 
+    @Autowired
+    private AppConfig appConfig;
+
+    @Autowired
+    private Client client;
     /**
      * Process a light rest command and send the new state back to the response queue for updating
      * the web page.
@@ -50,7 +57,7 @@ public class LightRestTransformer {
     @Transformer(inputChannel="post", outputChannel="processResponse")
 	public EventState processMessage(Message<LightEvent> message) throws IOException {
 		LightEvent order =  message.getPayload();
-
+        logger.debug("starting light rest transformer");
 
         String extension;
 
@@ -61,15 +68,26 @@ public class LightRestTransformer {
             default: extension = "getStatus"; break;
         }
 
-        Client client = Client.create();
 
         logger.info("calling server:"+"http://"+order.getIp()+":8080/lightService/"+extension+"?socket="+order.getAddress());
-        WebResource webResource = client
-                .resource("http://"+order.getIp()+":8080/lightService/"+extension+"?socket="+order.getAddress());
 
+        WebResource webResource;
+
+        //added for debugging local
+/*        if(appConfig.getServerName() == "DEV"){
+            webResource = client
+                    .resource("http://localhost:8080/lightService/"+extension+"?socket="+order.getAddress());
+
+        }else {*/
+        logger.info("calling client");
+            webResource = client
+                    .resource("http://"+order.getIp()+":8080/lightService/"+extension+"?socket="+order.getAddress());
+
+ /*       }*/
+        logger.debug("call service");
         ClientResponse response = webResource.accept("application/json")
                 .get(ClientResponse.class);
-
+        logger.debug("response received");
         if(response.getStatus() != 200){
             logger.error("error return code was "+response.getStatus());
         }
@@ -81,6 +99,7 @@ public class LightRestTransformer {
         Light lightResponse = mapper.readValue(JsonResponse, Light.class);
         EventState returnState = (lightResponse.getStatus() ? EventState.ON : EventState.OFF);
             //create the return message
+        logger.info("returning new state: "+returnState.toString());
         return returnState;
 	}
 

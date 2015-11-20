@@ -43,11 +43,7 @@ public class LightTransformer {
      */
     @Transformer(inputChannel="delivery", outputChannel="post")
 	public LightEvent processMessage(ComponentEvent order) {
-        logger.debug("In LightTransformer: "+
-                new Object[] { order.getEventState(),
-                               order.getIp(),
-                               order.getServiceTypes() });
-
+        logger.info("light transfomer");
         return new LightEvent(order.getIp(), order.getEventState(),
                 order.getServiceTypes(),
                 order.getAddress());

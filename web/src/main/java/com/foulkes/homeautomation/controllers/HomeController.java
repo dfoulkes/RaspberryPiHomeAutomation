@@ -18,7 +18,6 @@ public class HomeController {
         return "home";
     }
 
-
     @RequestMapping(value = "/dashboard", method = {RequestMethod.GET})
     public String dashboardPage(ModelMap model) {
         return "dashboard";
@@ -26,6 +25,12 @@ public class HomeController {
 
     @RequestMapping(value = "/manage", method = {RequestMethod.GET})
     public String managePage(ModelMap model) {
-        return "dashboard";
+        return "manage";}
+
+    @RequestMapping(value = "/deviceDetails", method = {RequestMethod.GET})
+    public String componentsDetails(ModelMap model) {
+        return "deviceDetails";
     }
+
+
 }

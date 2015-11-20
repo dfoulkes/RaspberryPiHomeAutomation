@@ -1,8 +1,9 @@
-
+/core/target
+/core/target/*
 /.idea/*
 /common/target/*
 /lightService/target/*
 /web/target/*
 /web/src/main/resources/META-INF/persistence.xml
-/.idea
-/web/target
+/.idea/
+/web/target/

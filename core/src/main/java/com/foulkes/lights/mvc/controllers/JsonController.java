@@ -40,6 +40,17 @@ public class JsonController {
      * @param componentId
      * @return
      */
+    @RequestMapping("/getById.json")
+    public ComponentsModel getComponentData(@RequestParam String id, @RequestParam String subcommand){
+        ComponentsModel com = null;
+        try {
+            com = componentService.getById(id, subcommand);
+        } catch (NotFound notFound) {
+            notFound.printStackTrace();
+        }
+        return com;
+    }
+
 
     @RequestMapping("/setComponent.json")
     public EventState getComponentData(@RequestParam String status, @RequestParam String componentId, @RequestParam String subcommand) {
@@ -74,7 +85,6 @@ public class JsonController {
 
     @RequestMapping("/getAllComponents.json")
     public ComponentsJson getComponentData() {
-        logger.info("calling json");
         List<ComponentsModel> coms = componentService.getAll();
         ComponentsJson finalList = new ComponentsJson();
         for(ComponentsModel i : coms){
@@ -85,7 +95,6 @@ public class JsonController {
 
     @RequestMapping("/getDevices.json")
     public ManagedDeviceJson getDevicesData() {
-        logger.info("calling json");
         List<ManagedDeviceModel> coms = managedDeviceService.getAll();
         ManagedDeviceJson finalList = new ManagedDeviceJson();
         for(ManagedDeviceModel i : coms){

@@ -40,10 +40,7 @@ public class ComponentRouter {
 	public String processOrder(ComponentEvent order) {
 	    String result = null;
 	    
-	    logger.debug("In OrderRouter.  title='{}'  quantity={}  orderType={}"+
-	                 new Object[] { order.getIp(),
-	                                order.getServiceTypes(),
-	                                order.getEventState() }.toString());
+	    logger.info("processing route");
 	    
 	    switch (order.getServiceTypes()) {
 	        case LIGHT:

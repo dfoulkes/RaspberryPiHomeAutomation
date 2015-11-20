@@ -78,9 +78,9 @@
             <%--</div>--%>
         <%--</form>--%>
         <ul class="nav menu">
-            <li class="active"><a href="/dashboard"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg>Activity Watch</a></li>
-            <li><a href="tables.html"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Manage</a></li>
-            <li><a href="panels.html"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Alerts</a></li>
+            <li id="dashboardLink" class="active"><a ng-href="#/d/" ><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg>Activity Watch</a></li>
+            <li id="manageLink"><a ng-href="#/m/"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Manage</a></li>
+            <li id="alertsLink" ><a href="panels.html"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Alerts</a></li>
             <li class="parent ">
                 <a href="#">
                     <span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Dropdown
@@ -119,7 +119,7 @@
         <script type="application/javascript" src="./resources/bower_components/angular/angular.js"></script>
         <script type="application/javascript" src="./resources/bower_components/angular-route/angular-route.js"></script>
         <script type="application/javascript" src="./resources/js/app.js"></script>
-
+        <script type="application/javascript" src="./resources/js/service.js"></script>
 
     <script>
         !function ($) {
@@ -135,6 +135,26 @@
         $(window).on('resize', function () {
             if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
         })
+
+        $( "#dashboardLink" ).click(function() {
+            removeAllSelected();
+            $("#dashboardLink" ).addClass( "active");
+        });
+        $( "#manageLink" ).click(function() {
+            removeAllSelected();
+            $("#manageLink" ).addClass( "active");
+        });
+        $( "#alertsLink" ).click(function() {
+            removeAllSelected();
+            $("#alertsLink" ).addClass( "active");
+        });
+
+        function removeAllSelected(){
+            $( "#dashboardLink" ).removeClass( "active");
+            $( "#manageLink" ).removeClass( "active");
+            $( "#alertsLink" ).removeClass( "active");
+        }
+
     </script>
 
 
