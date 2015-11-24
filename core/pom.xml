@@ -107,7 +107,9 @@
         -->
         <profile>
            <id>dev</id>
+
             <build>
+                <finalName>core</finalName>
                 <plugins>
                     <plugin>
                         <artifactId>maven-antrun-plugin</artifactId>
@@ -144,6 +146,7 @@
         <profile>
             <id>prod</id>
             <build>
+                <finalName>core</finalName>
                 <plugins>
                     <plugin>
                         <artifactId>maven-antrun-plugin</artifactId>
