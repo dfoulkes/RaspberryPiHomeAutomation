@@ -32,5 +32,9 @@ public class HomeController {
         return "deviceDetails";
     }
 
+    @RequestMapping(value = "/rooms", method = {RequestMethod.GET})
+    public String roomDetials(ModelMap model) {
+        return "rooms";
+    }
 
 }

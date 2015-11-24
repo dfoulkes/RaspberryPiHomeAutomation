@@ -1,2 +1,3 @@
-com/foulkes/lights/mvc/registration/MockRegistration.class
 com/foulkes/lights/mvc/registration/MockImplementationFactory.class
+com/foulkes/lights/mvc/service/ManagedDeviceServiceImplTest.class
+com/foulkes/lights/mvc/registration/MockRegistration.class

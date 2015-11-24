@@ -24,6 +24,7 @@
             <groupId>com.foulkes.homeAutomation</groupId>
             <artifactId>common</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
 <!-- Spring framework -->
         <dependency>
@@ -96,6 +97,7 @@
             <version>1.9.5</version>
             <scope>test</scope>
         </dependency>
+
 
     </dependencies>
 

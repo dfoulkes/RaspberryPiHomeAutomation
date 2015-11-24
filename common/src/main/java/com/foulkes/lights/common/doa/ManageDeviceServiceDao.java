@@ -16,12 +16,17 @@ import java.util.List;
 public class ManageDeviceServiceDao extends DaoInstance{
 
 
-    public ManagedDeviceModel add(ComponentsModel component, String room){
-        return null;
+    public ManagedDeviceModel add(ManagedDeviceModel room){
+        ManagedDevice transactionModel = ManagedDevice.build(room);
+        getEntityManager().getTransaction().begin();
+        getEntityManager().persist(transactionModel);
+        getEntityManager().getTransaction().commit();
+        return ManagedDeviceModel.build(transactionModel);
     }
 
-    public List<ManagedDeviceModel> getByRoom(String room){
-        return null;
+    public ManagedDeviceModel getByRoom(String room){
+        ManagedDevice devices =  getEntityManager().createNamedQuery("ManagedDevice.getByRoom", ManagedDevice.class).setParameter("id",room).getSingleResult();
+        return ManagedDeviceModel.build(devices);
     }
 
     public List<ManagedDeviceModel> getAll(){
@@ -36,7 +41,11 @@ public class ManageDeviceServiceDao extends DaoInstance{
     }
 
     public ManagedDeviceModel update(ManagedDeviceModel model){
-        return null;
+        getEntityManager().getTransaction().begin();
+        ManagedDevice toUpdate = ManagedDevice.build(model);
+        getEntityManager().merge(toUpdate);
+        getEntityManager().getTransaction().commit();
+        return ManagedDeviceModel.build(toUpdate);
     }
 
     public ManagedDeviceModel getByDevice(Long id) throws NotFound {

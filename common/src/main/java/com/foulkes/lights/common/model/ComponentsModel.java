@@ -4,11 +4,15 @@ import com.foulkes.lights.common.domain.Components;
 import com.foulkes.lights.common.enums.ServiceTypes;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  * Created by danfoulkes on 03/10/15.
  */
-public class ComponentsModel implements Serializable{
+public class ComponentsModel implements Serializable, Comparable<ComponentsModel>{
     private static final long serialVersionUID = 5464166116243968076L;
     private String uniquieId;
     private ServiceTypes componentType;
@@ -17,7 +21,7 @@ public class ComponentsModel implements Serializable{
     private String ip;
 
     public ComponentsModel(){
-
+        uniquieId= "";
     }
 
     public String getAddressDetails() {
@@ -69,6 +73,37 @@ public class ComponentsModel implements Serializable{
         c.setAddressDetails(model.getAddressDetails());
         return c;
     }
+
+
+    public static HashSet<ComponentsModel> builds(List<Components> components) {
+
+        HashSet<ComponentsModel> modelList = new HashSet<>();
+        for(Components i : components){
+            modelList.add(ComponentsModel.build(i));
+        }
+        return modelList;
+    }
+
+    @Override
+    public int compareTo(ComponentsModel o) {
+        int value =  uniquieId.compareTo(o.getUniquieId());
+        return value;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o instanceof ComponentsModel){
+            ComponentsModel cm = (ComponentsModel) o;
+            return uniquieId.equals(cm.getUniquieId());
+        }
+      return false;
+    }
+
+    @Override
+    public int hashCode(){
+        return uniquieId.hashCode();
+    }
+
 
 
 }

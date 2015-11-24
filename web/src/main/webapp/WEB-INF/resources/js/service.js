@@ -3,20 +3,6 @@
 homeAutomationApp.factory('ComponentService', function() {
     var srv = {};
     srv._books = null;
-    //srv._books = [
-    //    {
-    //        id       : '1',
-    //        addressType : '1',
-    //        type  : 'Light',
-    //        status  : 'ON'
-    //    },
-    //    {
-    //        id       : '1',
-    //        addressType : '2',
-    //        type  : 'Light',
-    //        status  : 'OFF'
-    //    }
-    //];
 
     // Service implementation
     srv.getById = function(id, subId) {
@@ -63,6 +49,46 @@ homeAutomationApp.factory('ComponentService', function() {
     return {
         getComponentById: function(id, subId) {
             return srv.getById(id,subId);
+        },
+        getAll: function() {
+            return srv.getAll();
+        }
+    };
+});
+
+
+homeAutomationApp.factory('RoomService', function() {
+    var srv = {};
+    srv._devices = null;
+
+    // Service implementation
+    srv.getByRoom = function(room) {
+        //
+        $.ajax({
+            url: "/core/getAllDevices.json",
+            async: false
+        }).then(function(data) {
+            srv._devices = data;
+        });
+
+       var roomCollection = [];
+        for (var i = 0, n = srv._devices.length; i < n; i++) {
+            if (room === srv._devices[i].room) {
+                roomCollection.push(angular.copy(srv._devices[i]));
+            }
+        }
+        return roomCollection;
+    };
+
+    srv.getAll = function() {
+        // Copy the array in _devices not to expose internal data structures
+        return angular.copy(srv._books);
+    };
+
+    // Public API
+    return {
+        getByRoom: function(room) {
+            return srv.getByRoom(room);
         },
         getAll: function() {
             return srv.getAll();

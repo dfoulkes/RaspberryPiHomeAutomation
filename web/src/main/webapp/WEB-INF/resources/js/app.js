@@ -21,6 +21,10 @@ homeAutomationApp.config(function ($routeProvider) {
         when('/device', {
             templateUrl: './deviceDetails',
             controller: 'ComponentCtrl'
+        }).
+        when('/room', {
+            templateUrl: './rooms',
+            controller: 'RoomCtrl'
         })
         .otherwise({
             redirectTo: '/d'
@@ -73,6 +77,14 @@ homeAutomationApp.controller('ComponentCtrl', function ($scope , $routeParams, C
             }
         });
     }
+});
+
+homeAutomationApp.controller('RoomCtrl', function ($scope , $routeParams, RoomService) {
+    $scope.project = {
+        name: "Home Automation (Management)"
+    }
+    $scope.componentId = $routeParams.componentId;
+    $scope.rooms = RoomService.getAll();
 });
 
 

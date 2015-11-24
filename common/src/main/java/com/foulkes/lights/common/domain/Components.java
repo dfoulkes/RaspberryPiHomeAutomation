@@ -4,6 +4,10 @@ import com.foulkes.lights.common.enums.ServiceTypes;
 import com.foulkes.lights.common.model.ComponentsModel;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by danfoulkes on 03/10/15.
@@ -83,5 +87,17 @@ public class Components {
         cm.setAssigned(components.getAssigned());
         cm.setAddressDetails(components.getAddressDetails());
         return cm;
+    }
+
+    public static List<Components> builds(Set<ComponentsModel> componentsModel) {
+        ArrayList<Components> componentsList = new ArrayList<>();
+
+        Iterator<ComponentsModel> it = componentsModel.iterator();
+
+        while(it.hasNext()){
+            ComponentsModel next = it.next();
+            componentsList.add(Components.build(next));
+        }
+        return componentsList;
     }
 }
