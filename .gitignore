@@ -1,6 +1,7 @@
+/core/target/core
 /core/target
 /core/target/*
-/.idea/*
+.idea/*
 /common/target/*
 /lightService/target/*
 /web/target/*
