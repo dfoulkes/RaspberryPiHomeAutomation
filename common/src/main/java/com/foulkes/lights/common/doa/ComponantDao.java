@@ -1,6 +1,7 @@
 package com.foulkes.lights.common.doa;
 
 import com.foulkes.lights.common.domain.Components;
+import com.foulkes.lights.common.enums.GenericType;
 import com.foulkes.lights.common.enums.ServiceTypes;
 import com.foulkes.lights.common.exception.FailedToAdd;
 import com.foulkes.lights.common.exception.NotFound;
@@ -19,7 +20,7 @@ public class ComponantDao extends DaoInstance{
 
     private Logger logger = Logger.getLogger(ComponantDao.class);
 
-    public ComponentsModel add(String id, ServiceTypes componentType, String ip, String address) throws AlreadyExists, FailedToAdd {
+    public ComponentsModel add(String id, ServiceTypes componentType, String ip, String address, GenericType genericType) throws AlreadyExists, FailedToAdd {
 
         try {
             if(getById(id, address) != null){
@@ -35,10 +36,13 @@ public class ComponantDao extends DaoInstance{
             com.setAssigned(false);
             com.setComponentType(componentType);
             com.setAddressDetails(address);
+            com.setGenericType(genericType);
             com.setIp(ip);
+
             getEntityManager().getTransaction().begin();
             getEntityManager().persist(com);
             getEntityManager().getTransaction().commit();
+
             return ComponentsModel.build(com);
         }
         catch(Exception e){

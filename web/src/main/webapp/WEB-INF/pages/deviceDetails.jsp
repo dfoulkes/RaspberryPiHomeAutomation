@@ -20,7 +20,7 @@
         <div class="panel panel-default">
           <div class="panel-heading" id="accordion"> Node {{component.addressDetails}}</div>
           <div class="panel-body">
-                  <div ng-if="component.componentType == 'LIGHT'">
+                  <div ng-if="component.genericType == 'LIGHT'">
                     <form name="form" class="container" ng-controller="ComponentCtrl">
                       <input style="width:200px" ng-change="updateSwitch()" type="checkbox" ng-model="component.status" bootstrap-switch/>
                     </form>

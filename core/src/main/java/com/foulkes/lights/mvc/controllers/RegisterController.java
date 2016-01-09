@@ -1,5 +1,6 @@
 package com.foulkes.lights.mvc.controllers;
 
+import com.foulkes.lights.common.enums.GenericType;
 import com.foulkes.lights.common.enums.RegistrationStatus;
 import com.foulkes.lights.common.enums.ServiceTypes;
 import com.foulkes.lights.common.exception.AlreadyExists;
@@ -25,10 +26,10 @@ public class RegisterController {
 
     @RequestMapping("/register")
     public RegistrationStatus
-    registerComponent(String componentId, ServiceTypes type, String ip, String address) {
+    registerComponent(String componentId, ServiceTypes type, String ip, String address, GenericType genericType) {
         try {
             logger.info("registering"+componentId+":"+type+":"+ip+": address: "+address);
-            componentService.add(componentId,type,ip, address);
+            componentService.add(componentId,type,ip, address, genericType);
         } catch (AlreadyExists alreadyExists) {
             return RegistrationStatus.ALREADY_EXISTS;
         } catch (FailedToAdd failedToAdd) {

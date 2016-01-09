@@ -1,6 +1,8 @@
 package com.foulkes.lights.mvc.routing.event;
 
 
+import com.foulkes.lights.common.enums.EventState;
+
 /**
  * Created by danfoulkes on 15/10/2015.
  */

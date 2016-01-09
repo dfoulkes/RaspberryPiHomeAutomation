@@ -27,6 +27,10 @@ public class HomeController {
     public String managePage(ModelMap model) {
         return "manage";}
 
+    @RequestMapping(value = "/add", method = {RequestMethod.GET})
+    public String addComPage(ModelMap model) {
+        return "add";}
+
     @RequestMapping(value = "/deviceDetails", method = {RequestMethod.GET})
     public String componentsDetails(ModelMap model) {
         return "deviceDetails";

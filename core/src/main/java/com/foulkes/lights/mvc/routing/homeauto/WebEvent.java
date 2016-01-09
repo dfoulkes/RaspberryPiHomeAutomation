@@ -16,7 +16,8 @@
 
 package com.foulkes.lights.mvc.routing.homeauto;
 
-import com.foulkes.lights.mvc.routing.event.EventState;
+import com.foulkes.lights.common.enums.EventState;
+import com.foulkes.lights.mvc.routing.homeauto.annotation.payloads.Response;
 import org.springframework.integration.annotation.Gateway;
 
 /**
@@ -31,6 +32,6 @@ public interface WebEvent {
 	 * Process a homeauto order.
 	 */
 	@Gateway(requestChannel="processOrder", replyChannel = "processResponse")
-	EventState process(ComponentEvent order);
+	Response process(ComponentEvent order);
 
 }

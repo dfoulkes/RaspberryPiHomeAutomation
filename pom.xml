@@ -1,11 +1,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.springapp</groupId>
+    <groupId>com.foulkes.homeAutomation</groupId>
     <artifactId>RaspberryPiSwitch</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>RaspberryPiSwitch</name>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+
+    <developers>
+        <developer>
+            <id>dfoulkes</id>
+        </developer>
+        <developer>
+            <id>danfoulkes</id>
+        </developer>
+    </developers>
 
     <properties>
         <spring.version>4.1.1.RELEASE</spring.version>
@@ -17,6 +35,7 @@
         <module>core</module>
         <module>web</module>
         <module>lightService</module>
+        <module>upnp</module>
     </modules>
 
 
@@ -34,14 +53,6 @@
             <version>3.0.1</version>
         </dependency>
 
-        <!-- Raspberry Pi GPIO -->
-        <!--<dependency>-->
-            <!--<groupId>com.pi4j</groupId>-->
-            <!--<artifactId>pi4j-device</artifactId>-->
-            <!--&lt;!&ndash;<version>1.1-SNAPSHOT</version>&ndash;&gt;-->
-            <!--<version>1.0-DF</version>-->
-            <!--<classifier>sources</classifier>-->
-        <!--</dependency>-->
 
         <!-- Jackson -->
         <dependency>

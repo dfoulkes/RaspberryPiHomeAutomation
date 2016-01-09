@@ -1,21 +1,30 @@
 package com.foulkes.lights.mvc.controllers;
 
+import com.foulkes.lights.common.doa.EventDao;
+import com.foulkes.lights.common.domain.Components;
+import com.foulkes.lights.common.domain.Event;
+import com.foulkes.lights.common.enums.ServiceTypes;
+import com.foulkes.lights.common.exception.AlreadyExists;
+import com.foulkes.lights.common.exception.FailedToAdd;
 import com.foulkes.lights.common.exception.NotFound;
 import com.foulkes.lights.common.json.ComponentsJson;
-import com.foulkes.lights.common.json.ManagedDeviceJson;
 import com.foulkes.lights.common.model.ComponentsModel;
-import com.foulkes.lights.common.model.ManagedDeviceModel;
+import com.foulkes.lights.mvc.routing.factory.ProcessEvent;
 import com.foulkes.lights.mvc.routing.homeauto.ComponentEvent;
 import com.foulkes.lights.mvc.routing.homeauto.WebEvent;
 import com.foulkes.lights.mvc.routing.event.ComponentAction;
-import com.foulkes.lights.mvc.routing.event.EventState;
+import com.foulkes.lights.common.enums.EventState;
+import com.foulkes.lights.mvc.routing.homeauto.annotation.payloads.Response;
 import com.foulkes.lights.mvc.service.ComponentService;
 import com.foulkes.lights.mvc.service.ManagedDeviceService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 
 
 @RestController
@@ -27,7 +36,9 @@ public class ComponentController {
     @Autowired
     private ManagedDeviceService managedDeviceService;
     @Autowired
-    private WebEvent order;
+    private EventDao eventDao;
+    @Autowired
+    private ProcessEvent processEvent;
 
 
 
@@ -71,9 +82,15 @@ public class ComponentController {
 
         try {
             ComponentsModel com = componentService.getById(componentId, subcommand);
-            ComponentEvent message = new ComponentEvent(com.getIp(), state, com.getComponentType(), com.getAddressDetails());
-            EventState x = order.process(message);
-            state = x;
+
+            Response x = processEvent.processComponentEvent(com,state);
+            Event event = new Event();
+            event.setComponents(Components.build(com));
+            event.setOnDate(new Date(Calendar.getInstance().getTimeInMillis()));
+            event.setState(x.getEventState());
+
+            eventDao.add(event);
+
         } catch (NotFound notFound) {
             notFound.printStackTrace();
         }
@@ -89,6 +106,20 @@ public class ComponentController {
             finalList.add(i);
         }
         return finalList;
+    }
+
+    @RequestMapping("/addCom.html")
+    public String addComponent(@RequestParam String ip, @RequestParam String type){
+        Random ran = new Random();
+        String uniqueId = Integer.toString(ran.nextInt());
+/*        try {
+            componentService.add(uniqueId, ServiceTypes.LIGHT_WEMO, ip, "");
+        } catch (AlreadyExists alreadyExists) {
+            alreadyExists.printStackTrace();
+        } catch (FailedToAdd failedToAdd) {
+            failedToAdd.printStackTrace();
+        }*/
+        return "component";
     }
 
 

@@ -34,7 +34,11 @@
     <channel id="processOrder"/>
     <channel id="processResponse"/>
 
-    <channel id="delivery"/>
+    <channel id="light"/>
+
+    <channel id="light_wemo_insight"/>
+    <channel id="light_homebrew"/>
+
     <channel id="pickup"/>
 
     <channel id="componentState" />

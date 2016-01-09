@@ -16,9 +16,11 @@
 
 package com.foulkes.lights.mvc.routing.homeauto.annotation.router;
 
+import com.foulkes.lights.common.doa.EventDao;
 import com.foulkes.lights.mvc.routing.homeauto.ComponentEvent;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.Router;
 
@@ -28,10 +30,10 @@ import org.springframework.integration.annotation.Router;
  * @author David Winterfeldt
  */
 @MessageEndpoint
-public class ComponentRouter {
+public class ComponentRouter{
 
     final Logger logger = Logger.getLogger(ComponentRouter.class);
-    
+
     /**
      * Process order.  Routes based on whether or 
      * not the order is a delivery or pickup.
@@ -42,15 +44,13 @@ public class ComponentRouter {
 	    
 	    logger.info("processing route");
 	    
-	    switch (order.getServiceTypes()) {
+	    switch (order.getGenericType()) {
 	        case LIGHT:
-	            result = "delivery";
+	            result = "light";
 	            break;
             case CAM:
                 result = "pickup";
-                break;	            
 	    }
-	    
 		return result;
 	}
 

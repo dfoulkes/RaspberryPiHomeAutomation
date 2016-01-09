@@ -16,8 +16,10 @@
 
 package com.foulkes.lights.mvc.routing.homeauto;
 
+import com.foulkes.lights.common.enums.GenericType;
 import com.foulkes.lights.common.enums.ServiceTypes;
-import com.foulkes.lights.mvc.routing.event.EventState;
+import com.foulkes.lights.common.enums.EventState;
+import com.foulkes.lights.mvc.routing.homeauto.annotation.light.LightType;
 
 /**
  * Online homeauto order information.
@@ -27,13 +29,12 @@ import com.foulkes.lights.mvc.routing.event.EventState;
 public class LightEvent extends ComponentEvent {
 
     public final String address;
-
     /**
      * Constructor
      */
     public LightEvent(String ip, EventState event,
-                      ServiceTypes componentType, String address) {
-        super(ip, event, componentType, address);
+                      ServiceTypes componentType, GenericType genericType, String address) {
+        super(ip, event, componentType, genericType, address);
         this.address = address;
     }
 
@@ -41,8 +42,5 @@ public class LightEvent extends ComponentEvent {
         return address;
     }
 
-    /**
-     * Gets address.
-     */
 
 }

@@ -1,7 +1,7 @@
 package com.foulkes.lights.mvc.frontend.model;
 
 import com.foulkes.lights.common.enums.ServiceTypes;
-import com.foulkes.lights.mvc.routing.event.EventState;
+import com.foulkes.lights.common.enums.EventState;
 
 /**
  * Created by danfoulkes on 30/10/15.

@@ -1,5 +1,6 @@
 package com.foulkes.lights.mvc.setup;
 
+import com.foulkes.lights.common.enums.GenericType;
 import com.foulkes.lights.common.enums.ServiceTypes;
 
 /**
@@ -10,6 +11,7 @@ public class Register {
     private String componentId;
     private ServiceTypes serviceTypes;
     private String ip;
+    private GenericType genericType;
 
 
 }

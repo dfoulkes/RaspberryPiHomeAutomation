@@ -1,3 +1,5 @@
-com/foulkes/lights/mvc/registration/MockImplementationFactory.class
-com/foulkes/lights/mvc/service/ManagedDeviceServiceImplTest.class
-com/foulkes/lights/mvc/registration/MockRegistration.class
+com/foulkes/lights/mvc/routing/homeauto/annotation/light/LightHomeBrewTransformerTest.class
+com/foulkes/lights/mvc/routing/homeauto/annotation/light/TestState.class
+com/foulkes/lights/mvc/routing/homeauto/annotation/light/LightWemoTransformerTest.class
+com/foulkes/lights/mvc/routing/homeauto/annotation/router/WemoTest.class
+com/foulkes/lights/mvc/routing/homeauto/annotation/router/EntireLineTest.class

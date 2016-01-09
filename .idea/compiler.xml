@@ -58,12 +58,35 @@
         <processorPath useClasspath="true" />
         <module name="core" />
       </profile>
+      <profile default="false" name="Annotation profile for MemoInsight" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="MemoInsight" />
+      </profile>
+      <profile default="false" name="Annotation profile for memoInsight" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Annotation profile for upnp" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="upnp" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="common" target="1.7" />
       <module name="core" target="1.7" />
       <module name="lightService" target="1.7" />
+      <module name="MemoInsight" target="1.7" />
+      <module name="memoInsight" target="1.7" />
       <module name="RaspberryPiSwitch" target="1.7" />
+      <module name="upnp" target="1.7" />
       <module name="web" target="1.7" />
       <module name="web (1)" target="1.7" />
       <module name="webservice" target="1.7" />

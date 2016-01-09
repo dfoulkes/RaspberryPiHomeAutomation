@@ -2,6 +2,7 @@ package com.foulkes.lights.mvc.service;
 
 import com.foulkes.lights.common.doa.ComponantDao;
 import com.foulkes.lights.common.domain.Components;
+import com.foulkes.lights.common.enums.GenericType;
 import com.foulkes.lights.common.enums.ServiceTypes;
 import com.foulkes.lights.common.exception.AlreadyExists;
 import com.foulkes.lights.common.exception.FailedToAdd;
@@ -51,7 +52,7 @@ public class ComponentServiceImpl implements ComponentService
     }
 
     @Override
-    public ComponentsModel add(String uniqueId, ServiceTypes type, String ip, String address) throws AlreadyExists, FailedToAdd {
+    public ComponentsModel add(String uniqueId, ServiceTypes type, String ip, String address, GenericType genericType) throws AlreadyExists, FailedToAdd {
        //check if the device exists if so then update the ip address
         try {
 
@@ -60,17 +61,18 @@ public class ComponentServiceImpl implements ComponentService
             c.setComponentType(type);
             c.setUniquieId(uniqueId);
             c.setAddressDetails(address);
+            c.setGenericType(genericType);
             logger.info("updated component "+c.getUniquieId()+" @ "+c.getIp());
 
             if(componantDao.getById(c.getUniquieId(), address) != null){
                return update(c);
             }
             else{
-                return componantDao.add(uniqueId,type,ip, address);
+                return componantDao.add(uniqueId,type,ip, address, genericType);
             }
         } catch (NotFound notFound) {
             logger.info("adding new");
-            return componantDao.add(uniqueId,type,ip, address);
+            return componantDao.add(uniqueId,type,ip, address, genericType);
         }catch(Exception e){
             logger.error(e.getMessage());
             throw new FailedToAdd();

@@ -5,11 +5,5 @@
 
 
 
-       <!--<bean class="com.foulkes.lights.mvc.service.ComponentServiceImpl" id="componentService"/>-->
-       <!--<bean class="com.foulkes.lights.mvc.service.ManagedDeviceServiceImpl" id="managedDeviceService" />-->
-
-       <!--<bean class="com.foulkes.lights.common.doa.ScheduleDao" id="scheduleDao"/>-->
-       <!--<bean class="com.foulkes.lights.common.doa.ManageDeviceServiceDao" id="deviceServiceDao"/>-->
-       <!--<bean class="com.foulkes.lights.common.doa.ComponantDao" id="componantDao"/>-->
 
 </beans>

@@ -45,6 +45,10 @@ homeAutomationApp.factory('ComponentService', function() {
         return angular.copy(srv._books);
     };
 
+    srv.add = function(com,ip){
+      alert("added component");
+    };
+
     // Public API
     return {
         getComponentById: function(id, subId) {
@@ -52,6 +56,9 @@ homeAutomationApp.factory('ComponentService', function() {
         },
         getAll: function() {
             return srv.getAll();
+        },
+        add: function(com, ip) {
+            return srv.add(com,ip);
         }
     };
 });

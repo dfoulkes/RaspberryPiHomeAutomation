@@ -1,6 +1,7 @@
 package com.foulkes.lights.common.model;
 
 import com.foulkes.lights.common.domain.Components;
+import com.foulkes.lights.common.enums.GenericType;
 import com.foulkes.lights.common.enums.ServiceTypes;
 
 import java.io.Serializable;
@@ -16,9 +17,12 @@ public class ComponentsModel implements Serializable, Comparable<ComponentsModel
     private static final long serialVersionUID = 5464166116243968076L;
     private String uniquieId;
     private ServiceTypes componentType;
+    private GenericType genericType;
     private Boolean assigned;
     private String addressDetails;
     private String ip;
+
+
 
     public ComponentsModel(){
         uniquieId= "";
@@ -71,9 +75,17 @@ public class ComponentsModel implements Serializable, Comparable<ComponentsModel
         c.setComponentType(model.getComponentType());
         c.setIp(model.getIp());
         c.setAddressDetails(model.getAddressDetails());
+        c.setGenericType(model.getGenericType());
         return c;
     }
 
+    public GenericType getGenericType() {
+        return genericType;
+    }
+
+    public void setGenericType(GenericType genericType) {
+        this.genericType = genericType;
+    }
 
     public static HashSet<ComponentsModel> builds(List<Components> components) {
 

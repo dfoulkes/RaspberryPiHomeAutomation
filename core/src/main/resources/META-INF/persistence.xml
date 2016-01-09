@@ -6,13 +6,14 @@
 		<class>com.foulkes.lights.common.domain.Schedule</class>
 		<class>com.foulkes.lights.common.domain.Components</class>
 		<class>com.foulkes.lights.common.domain.ManagedDevice</class>
+		<class>com.foulkes.lights.common.domain.Event</class>
 		<properties>
 			<property name="eclipselink.jdbc.batch-writing" value="JDBC"/>
 			<property name="eclipselink.jdbc.cache-statements" value="false"/>
 			<property name="eclipselink.jdbc.native-sql" value="true"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="javax.persistence.jdbc.password" value="coolrunnings"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.1.240:3306/HomeAutomation_Test"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.1.240:3306/HomeAutomation"/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<!--<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/> -->
 			<property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>

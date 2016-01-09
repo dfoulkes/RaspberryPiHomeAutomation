@@ -2,6 +2,7 @@ package com.foulkes.lights.mvc.endpoints;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.foulkes.lights.common.enums.GenericType;
 import com.foulkes.lights.common.enums.RegistrationStatus;
 import com.foulkes.lights.common.enums.ServiceTypes;
 
@@ -73,7 +74,8 @@ public class UpdateParent{
                 soc = "2";
             }
 
-            String url = "http://" + appConifg.getServerUrl() + ":" + appConifg.getServerPort() + "/" + appConifg.getProjectName() + "/register?componentId=" + appConifg.getComponentId() + "&type=" + ServiceTypes.LIGHT + "&ip=" + currentIp + "&address="+soc;
+            String url = "http://" + appConifg.getServerUrl() + ":" + appConifg.getServerPort() + "/" + appConifg.getProjectName() + "/register?componentId=" + appConifg.getComponentId() + "&type=" + ServiceTypes.LIGHT_HOMEBREW + "&ip=" + currentIp + "&address="+soc+"&genericType="+ GenericType.LIGHT;
+
             logger.info("calling: " + url);
             WebResource webResource = client
                     .resource(url);

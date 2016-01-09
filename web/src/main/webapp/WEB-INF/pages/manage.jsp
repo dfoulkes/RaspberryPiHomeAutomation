@@ -40,6 +40,9 @@
             </thead>
           </table>
 
+          <div>
+           <a href="#/add/">Add New</a>
+          </div>
         </div>
       </div>
     </div>

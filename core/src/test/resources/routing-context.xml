@@ -9,41 +9,54 @@
                                  http://www.springframework.org/schema/context
                                  http://www.springframework.org/schema/context/spring-context.xsd
                                  http://www.springframework.org/schema/integration
-                                 http://www.springframework.org/schema/integration/spring-integration-3.0.xsd
+                                 http://www.springframework.org/schema/integration/spring-integration-4.1.xsd
                                  http://www.springframework.org/schema/integration/stream
-                                 http://www.springframework.org/schema/integration/stream/spring-integration-stream-3.0.xsd">
+                                 http://www.springframework.org/schema/integration/stream/spring-integration-stream-4.1.xsd">
 
     <!-- 
            processOrder
                 |
-            ComponentRouter
+            OrderRouter
              /     \
-                   Light
+        pickup     delivery
           |           |
-                 RestLight
+        store    DeliveryTranformer
                       |
-
+                     post
     -->
 
     <annotation-config/>
 
-    <!-- End points beans -->
-    <beans:bean class="com.foulkes.lights.mvc.routing.endpoints.LightAdapter" id="lightRest"></beans:bean>
+    <!--<context:component-scan base-package="com.foulkes.lights.mvc.routing.homeauto.annotation"/>-->
 
-    <context:component-scan base-package="com.foulkes.lights.mvc.routing.*"/>
+    <gateway id="order" service-interface="com.foulkes.lights.mvc.routing.homeauto.WebEvent" default-reply-channel="processResponse"/>
 
-    <!-- Gateways -->
-    <gateway id="homeAutomation" service-interface="com.foulkes.lights.mvc.routing.gateway.HomeAutomation"/>
+    <channel id="processOrder"/>
+    <channel id="processResponse"/>
 
-    <!--Channels -->
-    <channel id="processEvent"/>
     <channel id="light"/>
-    <channel id="restfulCam"/>
 
-    <!--Transformers -->
-    <bridge input-channel="light" output-channel="restfulCam" />
+    <channel id="light_wemo_insight"/>
+    <channel id="light_homebrew"/>
 
-    <!--Adapters -->
-    <outbound-channel-adapter channel="restfulCam" ref="lightRest" method="processMessage" />
+    <channel id="pickup"/>
 
+    <channel id="componentState" />
+
+    <bridge input-channel="pickup" output-channel="store" />
+
+    <channel id="store"/>
+    <channel id="post"/>
+
+    <!--<outbound-channel-adapter channel="store" ref="camEndpoint" method="processMessage" />-->
+    <!--<outbound-channel-adapter channel="processResponse" ref="componentReply" method="processMessage" />-->
+
+    <beans:bean class="com.sun.jersey.api.client.Client" name="client">
+    </beans:bean>
+    <beans:bean class="com.foulkes.lights.mvc.routing.homeauto.annotation.light.LightHomeBrewTransformerTest" name="lightRestTransformer"/>
+    <!--<beans:bean class="com.foulkes.lights.mvc.routing.homeauto.annotation.cam.CamEndpoint" name="camEndpoint"/>-->
+    <beans:bean class="com.foulkes.lights.mvc.routing.homeauto.annotation.router.ComponentRouter" name="componentRouter"/>
+    <beans:bean class="com.foulkes.lights.mvc.routing.factory.ProcessEvent" name="processEvent"/>
+    <beans:bean class="com.foulkes.lights.mvc.routing.homeauto.annotation.router.LightRouter" name="lightRouter"/>
+    <beans:bean class="com.foulkes.lights.mvc.routing.homeauto.annotation.light.LightWemoTransformerTest" name="lightWemoTransformer"/>
 </beans:beans>

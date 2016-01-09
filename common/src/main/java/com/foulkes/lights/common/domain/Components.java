@@ -1,5 +1,6 @@
 package com.foulkes.lights.common.domain;
 
+import com.foulkes.lights.common.enums.GenericType;
 import com.foulkes.lights.common.enums.ServiceTypes;
 import com.foulkes.lights.common.model.ComponentsModel;
 
@@ -24,19 +25,29 @@ public class Components {
     @Id
     private String uniquieId;
     private ServiceTypes componentType;
+    private GenericType genericType;
     private String ip;
     private Boolean assigned;
     @Id
     private String addressDetails;
 
-    public Components(String uniqueId, ServiceTypes componentType, String ip){
+    public Components(String uniqueId, ServiceTypes componentType, GenericType genericType, String ip){
         this.uniquieId = uniqueId;
         this.componentType = componentType;
         this.ip = ip;
+        this.genericType = genericType;
     }
 
     public Components(){
 
+    }
+
+    public GenericType getGenericType() {
+        return genericType;
+    }
+
+    public void setGenericType(GenericType genericType) {
+        this.genericType = genericType;
     }
 
     public String getAddressDetails() {
@@ -85,6 +96,7 @@ public class Components {
         cm.setComponentType(components.getComponentType());
         cm.setIp(components.getIp());
         cm.setAssigned(components.getAssigned());
+        cm.setGenericType(components.getGenericType());
         cm.setAddressDetails(components.getAddressDetails());
         return cm;
     }

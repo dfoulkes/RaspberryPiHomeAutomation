@@ -17,7 +17,8 @@
 package com.foulkes.lights.mvc.routing.homeauto;
 
 import com.foulkes.lights.common.enums.ServiceTypes;
-import com.foulkes.lights.mvc.routing.event.EventState;
+import com.foulkes.lights.common.enums.EventState;
+import com.foulkes.lights.common.enums.GenericType;
 
 /**
  * Book order information.
@@ -30,16 +31,26 @@ public class ComponentEvent {
     private final String ip;
     private final EventState eventState;
     private final ServiceTypes componentType;
+    private final GenericType genericType;
     private final String address;
+
+    public GenericType getGenericType() {
+        return genericType;
+    }
 
     /**
      * Constructor
      */
-    public ComponentEvent(String ip, EventState eventState, ServiceTypes serviceTypes, String address) {
+
+
+
+    public ComponentEvent(String ip, EventState eventState, ServiceTypes serviceTypes, GenericType genericType, String address) {
         this.ip = ip;
         this.eventState = eventState;
         this.componentType = serviceTypes;
+        this.genericType = genericType;
         this.address = address;
+
     }
 
     public ServiceTypes getComponentType() {
@@ -70,5 +81,6 @@ public class ComponentEvent {
     public ServiceTypes getServiceTypes() {
         return componentType;
     }
+
 
 }

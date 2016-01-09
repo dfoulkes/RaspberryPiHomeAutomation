@@ -1,6 +1,7 @@
 package com.foulkes.lights.mvc.service;
 
 
+import com.foulkes.lights.common.enums.GenericType;
 import com.foulkes.lights.common.enums.ServiceTypes;
 import com.foulkes.lights.common.exception.AlreadyExists;
 import com.foulkes.lights.common.exception.FailedToAdd;
@@ -18,6 +19,6 @@ public interface ComponentService {
 
      List<ComponentsModel> getAll();
      ComponentsModel getById(String uniqueId, String address) throws NotFound;
-     ComponentsModel add(String uniqueId, ServiceTypes type, String ip, String address) throws AlreadyExists, FailedToAdd;
+     ComponentsModel add(String uniqueId, ServiceTypes type, String ip, String address, GenericType genericType) throws AlreadyExists, FailedToAdd;
      ComponentsModel update(ComponentsModel componentsModel) throws FailedToAdd;
 }

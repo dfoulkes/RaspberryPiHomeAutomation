@@ -13,7 +13,7 @@ public class ImplementationFactory {
     public static ComponentInterface getInstance(String ip, ServiceTypes type){
 
         switch (type){
-            case LIGHT: new SimpleLight(ip);
+            case LIGHT_HOMEBREW: new SimpleLight(ip);
         }
         return null;
     }

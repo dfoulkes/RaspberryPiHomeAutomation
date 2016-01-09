@@ -5,7 +5,7 @@ package com.foulkes.lights.common.enums;
  */
 public enum ServiceTypes {
 
-    LIGHT("LIGHT"), CAM("CAM");
+    LIGHT_HOMEBREW("LIGHT_HOMEBREW"), CAM("CAM"), LIGHT_WEMO("LIGHT_WEMO");
 
     private String name;
     ServiceTypes(String name){

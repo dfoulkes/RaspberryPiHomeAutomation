@@ -9,6 +9,9 @@ homeAutomationApp.config(function ($routeProvider) {
         .when('/m', {
             templateUrl: './manage',
             controller: 'MaintenanceCtrl'
+        }).when('/add', {
+            templateUrl: './add',
+            controller: 'AddCtrl'
         })
         .when('/d', {
             templateUrl: './dashboard',
@@ -39,10 +42,27 @@ homeAutomationApp.controller('MainCtrl', function ($scope) {
 }
 );
 
-homeAutomationApp.controller('MaintenanceCtrl', function ($scope) {
+homeAutomationApp.controller('MaintenanceCtrl', function ($scope, $routeParams, ComponentService) {
     $scope.project = {
         name: "Home Automation (Management)"
     }
+
+});
+
+homeAutomationApp.controller('AddCtrl', function ($scope, $routeParams, ComponentService) {
+    $scope.project = {
+        name: "Home Automation (Add Component)"
+    }
+    $scope.comType = '';
+    $scope.ipAddress = '';
+
+    $scope.submit = function() {
+            alert($scope.comType);
+            alert($scope.ipAddress);
+        ComponentService.add($scope.comType,$scope.ipAddress);
+
+    };
+
 
 });
 

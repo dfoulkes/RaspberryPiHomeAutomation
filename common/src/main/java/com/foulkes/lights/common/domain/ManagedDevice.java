@@ -21,8 +21,6 @@ public class ManagedDevice {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long id;
-    @OneToMany
-    @JoinColumn(name="uniquieId")
     List<Components> components;
 
     String room;
