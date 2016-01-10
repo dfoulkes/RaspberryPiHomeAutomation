@@ -40,5 +40,7 @@
 
     <bean id="gpioService" class="com.foulkes.lights.common.service.FileService"></bean>
 
+    <bean id="command" class="com.foulkes.homeAutomation.service.wemo.execution.Command" />
+
 
 </beans>

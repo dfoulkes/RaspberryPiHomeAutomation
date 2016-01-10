@@ -69,7 +69,8 @@
                         <div class="form-group">
                             <label for="comType">Name</label>
                             <select ng-model="comType" class="form-control" id="comType">
-                                <option>Wemo Insight</option>
+                                <option value="LIGHT_WEMO">Wemo Insight</option>
+                                <option value="LIGHT_HOMEBREW">Homebrew Insight</option>
                             </select>
                         </div>
                         <div class="form-group">

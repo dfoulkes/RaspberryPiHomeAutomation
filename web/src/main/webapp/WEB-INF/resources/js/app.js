@@ -49,17 +49,20 @@ homeAutomationApp.controller('MaintenanceCtrl', function ($scope, $routeParams, 
 
 });
 
-homeAutomationApp.controller('AddCtrl', function ($scope, $routeParams, ComponentService) {
+homeAutomationApp.controller('AddCtrl', function ($scope, $routeParams, ComponentService, $location) {
     $scope.project = {
         name: "Home Automation (Add Component)"
     }
     $scope.comType = '';
     $scope.ipAddress = '';
 
+
+
     $scope.submit = function() {
             alert($scope.comType);
             alert($scope.ipAddress);
         ComponentService.add($scope.comType,$scope.ipAddress);
+        $location.path("./#/m/");
 
     };
 

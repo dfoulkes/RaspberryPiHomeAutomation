@@ -17,6 +17,7 @@ public class Command {
     CommandEnum commandValues;
 
 
+
     public Command(CommandEnum commandValues){
        this.commandValues = commandValues;
     }

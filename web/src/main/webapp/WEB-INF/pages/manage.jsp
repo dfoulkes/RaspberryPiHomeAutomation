@@ -31,7 +31,7 @@
                    id="allComponents" data-toggle="table" data-url="/core/getAllComponents.json" data-pagination="true" data-sort-order="desc">
             <thead>
             <tr>
-              <th data-field="uniquieId" ng-href="componentId" data-sortable="true">Component Handler</th>
+              <th data-field="uniquieId" ng-href="uniquieId" data-sortable="true">Component Handler</th>
               <th data-field="componentType" data-sortable="true">Component Type</th>
               <th data-field="assigned">Assigned</th>
               <th data-field="addressDetails" data-sortable="true">Component Number</th>
@@ -61,34 +61,10 @@
         <div class="panel-body">
           <script>
 
-
-//            $('#allComponents').on('click', 'tr' , function (event) {
-//              console.log(event);
-//
-//            });
-
-//                $('#allComponents').on('all.bs.table', function (e, name, args) {
-//                    var assigned = args[0].assigned;
-//                    alert("called for"+row);
-//                });
-
-
-
                 $('#allComponents').on('click-row.bs.table', function (e, row, $element) {
                     console.log("id is:"+row.uniquieId);
                     window.location.href = '#/device/'+row.uniquieId+"/"+row.addressDetails;
                 });
-              /*$('#allComponents').on('click-cell.bs.table', function(e, value, row, $element){
-                var assigned = args[0].assigned;
-                console.log(row);
-                alert("called for"+row);
-              });
-*/
-//            $('#allComponents').onClickRow('all.bs.table', function (row, $element) {
-//              var assigned = args[0].assigned;
-//              console.log(row);
-//            });
-
 
             $(function () {
               $('#hover, #striped, #condensed').click(function () {

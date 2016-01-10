@@ -3,6 +3,7 @@ package com.foulkes.lights.mvc.controllers;
 import com.foulkes.lights.common.doa.EventDao;
 import com.foulkes.lights.common.domain.Components;
 import com.foulkes.lights.common.domain.Event;
+import com.foulkes.lights.common.enums.GenericType;
 import com.foulkes.lights.common.enums.ServiceTypes;
 import com.foulkes.lights.common.exception.AlreadyExists;
 import com.foulkes.lights.common.exception.FailedToAdd;
@@ -41,18 +42,18 @@ public class ComponentController {
     private ProcessEvent processEvent;
 
 
-
     private Logger logger = Logger.getLogger(ComponentController.class);
 
 
     /**
      * Call the spring integration gateway with the component event
+     *
      * @param id
      * @param subcommand
      * @return
      */
     @RequestMapping("/getById.json")
-    public ComponentsModel getComponentData(@RequestParam String id, @RequestParam String subcommand){
+    public ComponentsModel getComponentData(@RequestParam String id, @RequestParam String subcommand) {
         ComponentsModel com = null;
         try {
             com = componentService.getById(id, subcommand);
@@ -69,11 +70,18 @@ public class ComponentController {
 
         EventState state;
 
-        switch(status){
-            case "ON": state =  EventState.ON; break;
-            case "OFF": state =  EventState.OFF; break;
-            case "STATUS": state = EventState.STATUS; break;
-            default: state = EventState.STATUS;
+        switch (status) {
+            case "ON":
+                state = EventState.ON;
+                break;
+            case "OFF":
+                state = EventState.OFF;
+                break;
+            case "STATUS":
+                state = EventState.STATUS;
+                break;
+            default:
+                state = EventState.STATUS;
         }
 
         ComponentAction action = new ComponentAction();
@@ -83,7 +91,7 @@ public class ComponentController {
         try {
             ComponentsModel com = componentService.getById(componentId, subcommand);
 
-            Response x = processEvent.processComponentEvent(com,state);
+            Response x = processEvent.processComponentEvent(com, state);
             Event event = new Event();
             event.setComponents(Components.build(com));
             event.setOnDate(new Date(Calendar.getInstance().getTimeInMillis()));
@@ -102,17 +110,37 @@ public class ComponentController {
     public ComponentsJson getComponentData() {
         List<ComponentsModel> coms = componentService.getAll();
         ComponentsJson finalList = new ComponentsJson();
-        for(ComponentsModel i : coms){
+        for (ComponentsModel i : coms) {
             finalList.add(i);
         }
         return finalList;
     }
 
     @RequestMapping("/addCom.html")
-    public String addComponent(@RequestParam String ip, @RequestParam String type){
+    public String addComponent(@RequestParam String ip, @RequestParam String type) {
         Random ran = new Random();
         String uniqueId = Integer.toString(ran.nextInt());
-/*        try {
+        ServiceTypes serviceTypes = ServiceTypes.valueOf(type);
+        if (serviceTypes == serviceTypes.LIGHT_WEMO) {
+
+            try {
+                try {
+                    componentService.add(ip, serviceTypes, ip, "WEMO", GenericType.LIGHT);
+                } catch (AlreadyExists alreadyExists) {
+                    ComponentsModel cm = componentService.getById(ip, "WEMO");
+                    componentService.update(cm);
+
+                } catch (FailedToAdd failedToAdd) {
+                    failedToAdd.printStackTrace();
+                }
+            } catch (FailedToAdd failedToAdd) {
+                logger.error(failedToAdd.getMessage());
+
+            } catch (NotFound notFound) {
+                logger.error(notFound.getMessage());
+            }
+        }
+        /*        try {
             componentService.add(uniqueId, ServiceTypes.LIGHT_WEMO, ip, "");
         } catch (AlreadyExists alreadyExists) {
             alreadyExists.printStackTrace();

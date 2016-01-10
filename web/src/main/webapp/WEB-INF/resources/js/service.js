@@ -47,6 +47,13 @@ homeAutomationApp.factory('ComponentService', function() {
 
     srv.add = function(com,ip){
       alert("added component");
+        $.ajax({
+            url: "/core//addCom.html?ip="+ip+"&type="+com,
+            async: false
+        }).then(function(data) {
+            srv._books = data;
+        });
+        //redirect to route
     };
 
     // Public API
