@@ -8,3 +8,11 @@
 /web/src/main/resources/META-INF/persistence.xml
 /.idea/
 /web/target/
+/wemo/target/*
+/hue/src/main/resources/.DS_Store/*
+/hue/target/*
+/philipsHub/target/*
+/ssdp/target/*
+/hue/src/main/resources/.DS_Store
+.idea/workspace.xml
+
