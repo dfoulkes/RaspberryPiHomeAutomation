@@ -5,7 +5,7 @@ import com.foulkes.lights.common.enums.RegistrationStatus;
 import com.foulkes.lights.common.enums.ServiceTypes;
 import com.foulkes.lights.common.exception.AlreadyExists;
 import com.foulkes.lights.common.exception.FailedToAdd;
-import com.foulkes.lights.mvc.service.ComponentService;
+import com.foulkes.lights.common.service.ComponentService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 

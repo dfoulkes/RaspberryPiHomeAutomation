@@ -25,8 +25,14 @@ public class Event {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long id;
+    @ManyToOne(fetch = FetchType.LAZY)
+
+    @JoinColumns({
+                    @JoinColumn(name="fk_uniquieId", referencedColumnName="uniquieId"),
+                    @JoinColumn(name="fk_addressDetails", referencedColumnName="addressDetails")
+                })
     Components components;
-    EventState state;
+    String description;
     Date onDate;
 
     public Long getId() {
@@ -45,12 +51,12 @@ public class Event {
         this.components = components;
     }
 
-    public EventState getState() {
-        return state;
+    public String getDescription() {
+        return description;
     }
 
-    public void setState(EventState state) {
-        this.state = state;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getOnDate() {

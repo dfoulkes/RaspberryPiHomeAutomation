@@ -18,18 +18,21 @@ import java.util.Set;
 @Table(name="Components")
 @NamedQueries(value = {
         @NamedQuery(name = "Components.getAll", query = "SELECT components FROM Components components"),
+        @NamedQuery(name = "Components.getByUniqueId", query="SELECT components FROM Components components WHERE components.uniquieId = :id"),
         @NamedQuery(name = "Components.getById", query = "SELECT components FROM Components components WHERE components.uniquieId = :id AND components.addressDetails =  :address"),
 })
 public class Components {
 
     @Id
     private String uniquieId;
+    @Id
+    private String addressDetails;
+
     private ServiceTypes componentType;
     private GenericType genericType;
     private String ip;
     private Boolean assigned;
-    @Id
-    private String addressDetails;
+
 
     public Components(String uniqueId, ServiceTypes componentType, GenericType genericType, String ip){
         this.uniquieId = uniqueId;

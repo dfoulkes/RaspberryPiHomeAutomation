@@ -16,7 +16,7 @@
 
 package com.foulkes.lights.mvc.routing.homeauto;
 
-import com.foulkes.lights.common.enums.EventState;
+import com.foulkes.lights.common.events.ComponentEvent;
 import com.foulkes.lights.mvc.routing.homeauto.annotation.payloads.Response;
 import org.springframework.integration.annotation.Gateway;
 

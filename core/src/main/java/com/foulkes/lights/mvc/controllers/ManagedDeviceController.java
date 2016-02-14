@@ -2,8 +2,7 @@ package com.foulkes.lights.mvc.controllers;
 
 import com.foulkes.lights.common.json.ManagedDeviceJson;
 import com.foulkes.lights.common.model.ManagedDeviceModel;
-import com.foulkes.lights.mvc.service.ComponentService;
-import com.foulkes.lights.mvc.service.ManagedDeviceService;
+import com.foulkes.lights.common.service.ManagedDeviceService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

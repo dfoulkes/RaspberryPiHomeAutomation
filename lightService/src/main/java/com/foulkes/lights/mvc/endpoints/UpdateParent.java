@@ -74,7 +74,7 @@ public class UpdateParent{
                 soc = "2";
             }
 
-            String url = "http://" + appConifg.getServerUrl() + ":" + appConifg.getServerPort() + "/" + appConifg.getProjectName() + "/register?componentId=" + appConifg.getComponentId() + "&type=" + ServiceTypes.LIGHT_HOMEBREW + "&ip=" + currentIp + "&address="+soc+"&genericType="+ GenericType.LIGHT;
+            String url = "http://" + appConifg.getServerUrl() + ":" + appConifg.getServerPort() + "/" + appConifg.getProjectName() + "/register?componentId=" + appConifg.getComponentId() + "&type=" + ServiceTypes.SWITCH_HOMEBREW + "&ip=" + currentIp + "&address="+soc+"&genericType="+ GenericType.LIGHT;
 
             logger.info("calling: " + url);
             WebResource webResource = client

@@ -20,6 +20,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/memoInsight/pom.xml" />
+        <option value="$PROJECT_DIR$/ssdp-core/pom.xml" />
       </set>
     </option>
   </component>

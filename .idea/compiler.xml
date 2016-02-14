@@ -78,18 +78,55 @@
         <processorPath useClasspath="true" />
         <module name="upnp" />
       </profile>
+      <profile default="false" name="Annotation profile for philipsHub" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Annotation profile for wemo" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Annotation profile for ssdp-core" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Annotation profile for ssdp" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="ssdp" />
+      </profile>
+      <profile default="false" name="Annotation profile for hue" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="hue" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="common" target="1.7" />
       <module name="core" target="1.7" />
+      <module name="hue" target="1.7" />
       <module name="lightService" target="1.7" />
       <module name="MemoInsight" target="1.7" />
       <module name="memoInsight" target="1.7" />
+      <module name="philipsHub" target="1.7" />
       <module name="RaspberryPiSwitch" target="1.7" />
+      <module name="ssdp" target="1.7" />
+      <module name="ssdp-core" target="1.7" />
       <module name="upnp" target="1.7" />
       <module name="web" target="1.7" />
       <module name="web (1)" target="1.7" />
       <module name="webservice" target="1.7" />
+      <module name="wemo" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

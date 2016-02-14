@@ -9,6 +9,7 @@ import com.foulkes.lights.common.exception.AlreadyExists;
 import com.foulkes.lights.common.model.ComponentsModel;
 import org.springframework.stereotype.Repository;
 import javax.persistence.NoResultException;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
 
@@ -81,5 +82,19 @@ public class ComponantDao extends DaoInstance{
         getEntityManager().merge(comp);
         getEntityManager().getTransaction().commit();
         return ComponentsModel.build(comp);
+    }
+
+    public List<ComponentsModel> getByUniqueId(String componentId) throws NotFound {
+        try {
+            List<Components> list =  getEntityManager().createNamedQuery("Components.getByUniqueId", Components.class).setParameter("id", componentId).getResultList();
+            ArrayList<ComponentsModel> models = new ArrayList<>();
+            for(Components x : list){
+                models.add(ComponentsModel.build(x));
+            }
+            return models;
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            throw new NotFound();
+        }
     }
 }

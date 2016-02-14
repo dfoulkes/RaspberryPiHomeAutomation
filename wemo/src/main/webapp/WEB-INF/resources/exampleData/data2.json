@@ -1,0 +1,17 @@
+[
+{
+"uniquieId": "1",
+"componentType": "LIGHT",
+"assigned": false,
+"addressDetails": "1",
+"ip": "192.168.1.249"
+},
+
+{
+"uniquieId": "1",
+"componentType": "LIGHT",
+"assigned": false,
+"addressDetails": "2",
+"ip": "192.168.1.249"
+}
+]

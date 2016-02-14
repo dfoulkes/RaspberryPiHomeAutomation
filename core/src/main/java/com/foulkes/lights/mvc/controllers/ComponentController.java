@@ -11,13 +11,15 @@ import com.foulkes.lights.common.exception.NotFound;
 import com.foulkes.lights.common.json.ComponentsJson;
 import com.foulkes.lights.common.model.ComponentsModel;
 import com.foulkes.lights.mvc.routing.factory.ProcessEvent;
-import com.foulkes.lights.mvc.routing.homeauto.ComponentEvent;
-import com.foulkes.lights.mvc.routing.homeauto.WebEvent;
 import com.foulkes.lights.mvc.routing.event.ComponentAction;
 import com.foulkes.lights.common.enums.EventState;
+import com.foulkes.lights.mvc.routing.homeauto.annotation.light.payloads.HueLightResponse;
+import com.foulkes.lights.mvc.routing.homeauto.annotation.light.payloads.LightResponse;
 import com.foulkes.lights.mvc.routing.homeauto.annotation.payloads.Response;
-import com.foulkes.lights.mvc.service.ComponentService;
-import com.foulkes.lights.mvc.service.ManagedDeviceService;
+import com.foulkes.lights.common.service.ComponentService;
+import com.foulkes.lights.common.service.ManagedDeviceService;
+import com.foulkes.lights.mvc.routing.homeauto.annotation.switches.payloads.SwitchResponse;
+import com.foulkes.lights.mvc.routing.homeauto.annotation.switches.payloads.WemoResponse;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -95,15 +97,26 @@ public class ComponentController {
             Event event = new Event();
             event.setComponents(Components.build(com));
             event.setOnDate(new Date(Calendar.getInstance().getTimeInMillis()));
-            event.setState(x.getEventState());
-
+            event.setDescription(x.getMessage());
             eventDao.add(event);
+            return processResponse(x);
 
         } catch (NotFound notFound) {
             notFound.printStackTrace();
         }
+        return null;
+    }
 
-        return state;
+
+    private EventState processResponse(Response response){
+
+        if(response instanceof LightResponse){
+            return ((LightResponse) response).getEventState();
+        }
+        else if(response instanceof SwitchResponse){
+            return ((SwitchResponse) response).getEventState();
+        }
+        return null;
     }
 
     @RequestMapping("/getAllComponents.json")
@@ -116,18 +129,41 @@ public class ComponentController {
         return finalList;
     }
 
+
+    @RequestMapping("/updateComponent.json")
+    public ComponentsJson updateComponent(@RequestParam String oldComponent, @RequestParam String componentId,
+                                          @RequestParam String ip, @RequestParam String address) {
+        List<ComponentsModel> coms = null;
+        ComponentsJson finalList = new ComponentsJson();
+        try {
+            coms = componentService.getByUniqueId(oldComponent);
+
+            for (ComponentsModel i : coms) {
+                i.setUniquieId(componentId);
+                i.setIp(ip);
+                i.setAddressDetails(address);
+                componentService.update(i);
+                return finalList;
+            }
+        } catch (NotFound notFound) {
+
+        } catch (FailedToAdd failedToAdd) {
+            failedToAdd.printStackTrace();
+        }
+        return finalList;
+    }
+
     @RequestMapping("/addCom.html")
-    public String addComponent(@RequestParam String ip, @RequestParam String type) {
+    public String addComponent(@RequestParam String ip, @RequestParam String type, @RequestParam String address) {
         Random ran = new Random();
-        String uniqueId = Integer.toString(ran.nextInt());
         ServiceTypes serviceTypes = ServiceTypes.valueOf(type);
-        if (serviceTypes == serviceTypes.LIGHT_WEMO) {
+        if (serviceTypes == serviceTypes.SWITCH_WEMO) {
 
             try {
                 try {
-                    componentService.add(ip, serviceTypes, ip, "WEMO", GenericType.LIGHT);
+                    componentService.add(ip, serviceTypes, ip, address, GenericType.LIGHT);
                 } catch (AlreadyExists alreadyExists) {
-                    ComponentsModel cm = componentService.getById(ip, "WEMO");
+                    ComponentsModel cm = componentService.getById(ip, address);
                     componentService.update(cm);
 
                 } catch (FailedToAdd failedToAdd) {

@@ -16,47 +16,63 @@
     <!-- 
            processOrder
                 |
-            OrderRouter
-             /     \
-        pickup     delivery
-          |           |
-        store    DeliveryTranformer
-                      |
-                     post
+            OrderRouter______
+             /     |         \
+            /      |          \
+       CamRoute LightRouter     SwitchRouter
+                       \               \
+                        \               \
+                         \               \
+                       LightTransformer   SwitchRouter
+                               |            /        \
+                              Hue         homebrew   wemo
+
+
+
     -->
 
     <annotation-config/>
 
     <!--<context:component-scan base-package="com.foulkes.lights.mvc.routing.homeauto.annotation"/>-->
 
+
+    <!--<context:component-scan base-package="com.foulkes.lights.mvc.routing.homeauto.annotation.**"/>-->
+    <!---->
     <gateway id="order" service-interface="com.foulkes.lights.mvc.routing.homeauto.WebEvent" default-reply-channel="processResponse"/>
 
     <channel id="processOrder"/>
     <channel id="processResponse"/>
-
     <channel id="light"/>
+    <channel id="light_hue"/>
 
-    <channel id="light_wemo_insight"/>
-    <channel id="light_homebrew"/>
+    <channel id="switch"/>
+    <channel id="switch_wemo_insight"/>
+    <channel id="switch_homebrew"/>
 
-    <channel id="pickup"/>
 
     <channel id="componentState" />
-
     <bridge input-channel="pickup" output-channel="store" />
 
+    <channel id="pickup"/>
     <channel id="store"/>
     <channel id="post"/>
-
     <!--<outbound-channel-adapter channel="store" ref="camEndpoint" method="processMessage" />-->
     <!--<outbound-channel-adapter channel="processResponse" ref="componentReply" method="processMessage" />-->
 
     <beans:bean class="com.sun.jersey.api.client.Client" name="client">
     </beans:bean>
-    <beans:bean class="com.foulkes.lights.mvc.routing.homeauto.annotation.light.LightHomeBrewTransformerTest" name="lightRestTransformer"/>
+
+    <beans:bean name="componentRouter" class="com.foulkes.lights.mvc.routing.homeauto.annotation.switches.router.ComponentRouter" />
+
+
+    <beans:bean name="hudService" class="com.foulkes.lights.mvc.routing.homeauto.annotation.lights.service.HueServiceControllerTest" />
+    <beans:bean class="com.foulkes.lights.mvc.routing.homeauto.annotation.switches.SwitchHomeBrewTransformerTest" name="lightRestTransformer"/>
     <!--<beans:bean class="com.foulkes.lights.mvc.routing.homeauto.annotation.cam.CamEndpoint" name="camEndpoint"/>-->
-    <beans:bean class="com.foulkes.lights.mvc.routing.homeauto.annotation.router.ComponentRouter" name="componentRouter"/>
+    <!--<beans:bean class="com.foulkes.lights.mvc.routing.homeauto.annotation.switches.router.ComponentRouter" name="componentRouter"/>-->
     <beans:bean class="com.foulkes.lights.mvc.routing.factory.ProcessEvent" name="processEvent"/>
-    <beans:bean class="com.foulkes.lights.mvc.routing.homeauto.annotation.router.LightRouter" name="lightRouter"/>
-    <beans:bean class="com.foulkes.lights.mvc.routing.homeauto.annotation.light.LightWemoTransformerTest" name="lightWemoTransformer"/>
+    <beans:bean class="com.foulkes.lights.mvc.routing.homeauto.annotation.switches.router.SwitchRouter" name="switchRouter"/>
+    <beans:bean class="com.foulkes.lights.mvc.routing.homeauto.annotation.light.router.LightRouter" name="lightRouter"/>
+
+    <beans:bean class="com.foulkes.lights.mvc.routing.homeauto.annotation.switches.SwitchWemoTransformerTest" name="switchWemoTransformer"/>
+    <beans:bean class="com.foulkes.lights.mvc.routing.homeauto.annotation.lights.LightHueTransformerTest" name="lightHueTransformerTest"/>
 </beans:beans>

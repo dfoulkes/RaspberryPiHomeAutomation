@@ -10,11 +10,14 @@
 
     <!-- Enables the Spring MVC @Controller programming model -->
     <mvc:annotation-driven />
-    <context:component-scan base-package="com.foulkes.lights.**"/>
+    <context:component-scan base-package="com.foulkes.**"/>
+
+
+
 
     <bean name="manageDeviceServiceDaoMock" class="org.mockito.Mockito" factory-method="mock" />
 
-    <bean name="managedDeviceService" class="com.foulkes.lights.mvc.service.ManagedDeviceServiceImpl">
+    <bean name="managedDeviceService" class="com.foulkes.lights.common.service.ManagedDeviceServiceImpl">
         <property name="manageDeviceServiceDao" value="manageDeviceServiceDaoMock"/>
     </bean>
 

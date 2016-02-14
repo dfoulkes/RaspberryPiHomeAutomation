@@ -16,7 +16,7 @@
 
 package com.foulkes.lights.mvc.routing.homeauto.annotation.cam;
 
-import com.foulkes.lights.mvc.routing.homeauto.ComponentEvent;
+import com.foulkes.lights.common.events.ComponentEvent;
 import org.apache.log4j.Logger;
 
 import org.springframework.integration.annotation.MessageEndpoint;

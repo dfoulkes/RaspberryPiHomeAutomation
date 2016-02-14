@@ -1,8 +1,10 @@
 package com.foulkes.lights.common.doa;
 
 import com.foulkes.lights.common.domain.Event;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 /**
@@ -12,14 +14,19 @@ import java.util.List;
 public class EventDao extends DaoInstance {
 
     public void add(Event event){
-        getEntityManager().getTransaction().begin();
-        getEntityManager().persist(event);
-        getEntityManager().getTransaction().commit();
+        EntityManager t = getNewManager();
+        t.getTransaction().begin();
+        t.persist(event);
+        t.getTransaction().commit();
+        t.close();
     }
     public void remove(Event event){
-        getEntityManager().getTransaction().begin();
-        getEntityManager().remove(event);
-        getEntityManager().getTransaction().commit();
+        EntityManager t = getNewManager();
+        t.getTransaction().begin();
+        t.remove(event);
+        t.getTransaction().commit();
+        t.getTransaction().commit();
+        t.close();
     }
 
     public List<Event> getEvents(){

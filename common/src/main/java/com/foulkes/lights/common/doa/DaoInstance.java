@@ -20,9 +20,14 @@ public abstract class DaoInstance {
 			
 		}
 		 if(!em.isOpen())
-			 em = emf.createEntityManager();  
-		 
+			 em = emf.createEntityManager();
 			return em;
+	}
+
+	public EntityManager getNewManager(){
+		if(!emf.isOpen())
+			createEntityManagerFactory();
+		return emf.createEntityManager();
 	}
 	
 	public void createEntityManager(){
@@ -43,7 +48,7 @@ public abstract class DaoInstance {
 	}
 	
 	public void createEntityManagerFactory(){
-		emf = Persistence.createEntityManagerFactory("domain");
+		emf = Persistence.createEntityManagerFactory("sharedDomain");
 		logger.debug(emf.getPersistenceUnitUtil());
 	}
 

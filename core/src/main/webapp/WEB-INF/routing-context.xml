@@ -27,24 +27,23 @@
 
     <annotation-config/>
 
-    <context:component-scan base-package="com.foulkes.lights.mvc.routing.homeauto.annotation"/>
-
+    <context:component-scan base-package="com.foulkes.*"/>
     <gateway id="order" service-interface="com.foulkes.lights.mvc.routing.homeauto.WebEvent" default-reply-channel="processResponse"/>
 
     <channel id="processOrder"/>
     <channel id="processResponse"/>
-
     <channel id="light"/>
+    <channel id="light_hue"/>
 
-    <channel id="light_wemo_insight"/>
-    <channel id="light_homebrew"/>
+    <channel id="switch"/>
+    <channel id="switch_wemo_insight"/>
+    <channel id="switch_homebrew"/>
 
-    <channel id="pickup"/>
 
     <channel id="componentState" />
-
     <bridge input-channel="pickup" output-channel="store" />
 
+    <channel id="pickup"/>
     <channel id="store"/>
     <channel id="post"/>
 

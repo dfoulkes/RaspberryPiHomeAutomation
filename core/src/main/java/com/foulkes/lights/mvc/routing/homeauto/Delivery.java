@@ -16,6 +16,8 @@
 
 package com.foulkes.lights.mvc.routing.homeauto;
 
+import com.foulkes.lights.common.events.ComponentEvent;
+
 import java.util.List;
 
 /**

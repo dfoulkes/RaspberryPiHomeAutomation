@@ -14,7 +14,7 @@
     <artifactId>core</artifactId>
 
     <properties>
-        <springframework.version>4.1.4.RELEASE</springframework.version>
+
         <quartz.version>2.2.1</quartz.version>
         <jackson.version>2.2.3</jackson.version>
     </properties>
@@ -26,42 +26,7 @@
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
-<!-- Spring framework -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${springframework.version}</version>
-        </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${springframework.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${springframework.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${springframework.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.integration</groupId>
-            <artifactId>spring-integration-core</artifactId>
-            <version>4.1.6.RELEASE</version>
-        </dependency>
-        <!-- Transaction dependency is required with Quartz integration -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>${springframework.version}</version>
-        </dependency>
 
         <!-- Jackson JSON Mapper -->
 
@@ -102,6 +67,11 @@
             <artifactId>upnp</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.foulkes.homeAutomation</groupId>
+            <artifactId>hue</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
 
     </dependencies>
@@ -134,6 +104,23 @@
                             </execution>
                         </executions>
                     </plugin>
+
+                    <plugin>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.6</version>
+                        <configuration>
+                            <webResources>
+                                <resource>
+                                    <directory>src/main/resources/</directory>
+                                    <includes>
+                                    <include>**/*.jar</include>
+                                    </includes>
+                                    <targetPath>WEB-INF/lib</targetPath>
+                                </resource>
+                            </webResources>
+                        </configuration>
+                    </plugin>
+
 
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>

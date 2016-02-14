@@ -11,5 +11,18 @@ import java.io.Serializable;
  */
 public class ResponseLight extends Response implements Serializable{
 
+    EventState eventState;
 
+    public EventState getEventState() {
+        return eventState;
+    }
+
+    public void setEventState(EventState eventState) {
+        this.eventState = eventState;
+    }
+
+    @Override
+    public String getMessage() {
+        return getEventState().toString();
+    }
 }
