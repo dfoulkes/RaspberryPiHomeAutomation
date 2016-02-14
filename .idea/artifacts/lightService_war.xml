@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="lightService:war">
     <output-path>$PROJECT_DIR$/lightService/target</output-path>
-    <root id="archive" name="web.war">
+    <root id="archive" name="core.war">
       <element id="artifact" artifact-name="lightService:war exploded" />
     </root>
   </artifact>

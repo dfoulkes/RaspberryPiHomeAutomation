@@ -152,18 +152,13 @@
 
     <build>
         <plugins>
-
             <plugin>
-                <groupId>org.apache.openejb.maven</groupId>
-                <artifactId>tomee-maven-plugin</artifactId>
-                <version>1.7.1</version>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
                 <configuration>
-                    <tomeeVersion>1.7.1</tomeeVersion>
-                    <tomeeClassifier>plus</tomeeClassifier>
-                    <tomeeHost>192.168.1.249</tomeeHost>
+                            <warName>light</warName>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 

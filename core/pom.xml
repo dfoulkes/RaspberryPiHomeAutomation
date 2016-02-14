@@ -109,15 +109,7 @@
                         <artifactId>maven-war-plugin</artifactId>
                         <version>2.6</version>
                         <configuration>
-                            <webResources>
-                                <resource>
-                                    <directory>src/main/resources/</directory>
-                                    <includes>
-                                    <include>**/*.jar</include>
-                                    </includes>
-                                    <targetPath>WEB-INF/lib</targetPath>
-                                </resource>
-                            </webResources>
+                            <warName>core</warName>
                         </configuration>
                     </plugin>
 
@@ -171,5 +163,17 @@
         </profile>
 
     </profiles>
+
+    <build>
+      <plugins>
+        <plugin>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.6</version>
+            <configuration>
+                <warName>core</warName>
+            </configuration>
+        </plugin>
+      </plugins>
+    </build>
 
 </project>
