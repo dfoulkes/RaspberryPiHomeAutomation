@@ -47,7 +47,7 @@ public class HueTest {
     }
 
     @Test
-    public void hueTestOff() {
+    public void hueOffTest() {
         lightHueTransformerTest.setup(HueResponse(null,null,getHue(),EventState.OFF));
         Response result = processEvent.processComponentEvent(getEventChange(getHue(),EventState.OFF));
         if(result instanceof HueLightResponse){
@@ -61,7 +61,7 @@ public class HueTest {
     }
 
     @Test
-    public void hueTestOn() {
+    public void hueOnTest() {
         lightHueTransformerTest.setup(HueResponse(null,new LightLevel(255),getHue(),EventState.ON));
         Response result = processEvent.processComponentEvent(getEventChange(getHue(), EventState.ON));
         if(result instanceof HueLightResponse){
@@ -74,7 +74,7 @@ public class HueTest {
     }
 
     @Test
-    public void getLight() {
+    public void LightTest() {
 
         Hue hue = new Hue(1000);
         LightLevel lightLevel = new LightLevel(255);
@@ -94,7 +94,7 @@ public class HueTest {
 
 
     @Test
-    public void changeBrightNess() {
+    public void changeBrightnessTest() {
 
         Hue hue = new Hue(1000);
         //one value below min
@@ -135,7 +135,7 @@ public class HueTest {
 
 
     @Test
-    public void changeColours() {
+    public void changeColoursTest() {
 
         Hue hue = new Hue(1000);
         //one value below min

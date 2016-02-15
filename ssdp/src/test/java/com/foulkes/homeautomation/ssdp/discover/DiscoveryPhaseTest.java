@@ -22,7 +22,7 @@ public class DiscoveryPhaseTest {
 
 
     @Test
-    public void handleResponses() throws Exception {
+    public void handleResponsesTest() throws Exception {
         List<NetworkInterface> networkInterfaceList = new ArrayList<NetworkInterface>();
         networkInterfaceList.add(NetworkInterface.getByName("en0"));
         SSDPMulticastListener listener = new SSDPMulticastListener(new InetSocketAddress(SSDPContants.DEFAULT_IP, SSDPContants.DEFAULT_PORT), networkInterfaceList);
