@@ -17,17 +17,17 @@ import static org.junit.Assert.fail;
 /**
  * Created by danfoulkes on 01/02/2016.
  */
-public class DiscoveryPhaseTest {
+public class DiscoveryPhaseIntegration {
 
 
 
     @Test
-    public void handleResponsesTest() throws Exception {
+    public void findSsdpServices() throws Exception {
         List<NetworkInterface> networkInterfaceList = new ArrayList<NetworkInterface>();
         networkInterfaceList.add(NetworkInterface.getByName("en0"));
         SSDPMulticastListener listener = new SSDPMulticastListener(new InetSocketAddress(SSDPContants.DEFAULT_IP, SSDPContants.DEFAULT_PORT), networkInterfaceList);
         SSDPHandlerControler controler = new SSDPHandlerControler();
-      //  listener.setSSDPResponseHandler(new SSDPDefaultResponseHandler(controler));
+       listener.setSSDPResponseHandler(new SSDPDefaultResponseHandler(controler));
         listener.setSSDPResponseHandler(new SSDPDefaultResponseHandler(controler));
         listener.setBlocking(false);
         new Thread(listener).start();
