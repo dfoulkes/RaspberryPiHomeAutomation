@@ -36,7 +36,7 @@ public class ManagedDeviceServiceImpl implements ManagedDeviceService {
     public ManagedDeviceModel addDevice(ComponentsModel newComponent, ManagedDeviceModel room) throws AlreadyExists{
 
         ManagedDeviceModel roomModel =manageDeviceServiceDao.getByRoom(room.getRoom());
-        if(room == null){
+        if(roomModel == null){
             roomModel = new ManagedDeviceModel();
             roomModel.setRoom(room.getRoom());
             roomModel = add(roomModel);
