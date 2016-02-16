@@ -14,7 +14,7 @@ public class HomeController {
 
 
     @RequestMapping(value = "/", method = {RequestMethod.GET})
-    public String homePage(ModelMap model) {
+    public String homePage() {
         return "home";
     }
 
@@ -24,29 +24,29 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/manage", method = {RequestMethod.GET})
-    public String managePage(ModelMap model) {
+    public String managePage() {
         return "manage";}
 
-    @RequestMapping(value = "/add", method = {RequestMethod.GET})
-    public String addComPage(ModelMap model) {
+    @RequestMapping(value ="/add", method = {RequestMethod.GET})
+    public String addComPage() {
         return "add";}
 
     @RequestMapping(value = "/deviceDetails", method = {RequestMethod.GET})
-    public String componentsDetails(ModelMap model) {
+    public String componentsDetails() {
         return "deviceDetails";
     }
 
     @RequestMapping(value = "/rooms", method = {RequestMethod.GET})
-    public String roomDetials(ModelMap model) {
+    public String roomDetials() {
         return "rooms";
     }
 
     @RequestMapping(value = "/update", method = {RequestMethod.GET})
-    public String updateetials(ModelMap model) {
+    public String updateetials() {
         return "update";
     }
     @RequestMapping(value = "/updateDevice", method = {RequestMethod.GET})
-    public String updateDetialsCom(ModelMap model) {
+    public String updateDetialsCom() {
         return "updateDevice";
     }
 
