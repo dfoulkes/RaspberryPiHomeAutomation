@@ -1,8 +1,8 @@
-com/foulkes/lights/mvc/routing/homeauto/annotation/switches/SwitchWemoTransformerTest.class
-com/foulkes/lights/mvc/routing/homeauto/annotation/lights/service/HueServiceControllerTest.class
-com/foulkes/lights/mvc/routing/homeauto/annotation/switches/router/EntireLineTest.class
-com/foulkes/lights/mvc/routing/homeauto/annotation/switches/TestState.class
-com/foulkes/lights/mvc/routing/homeauto/annotation/lights/router/HueTest.class
-com/foulkes/lights/mvc/routing/homeauto/annotation/lights/LightHueTransformerTest.class
 com/foulkes/lights/mvc/routing/homeauto/annotation/switches/SwitchHomeBrewTransformerTest.class
+com/foulkes/lights/mvc/routing/homeauto/annotation/switches/router/EntireLineTest.class
+com/foulkes/lights/mvc/routing/homeauto/annotation/lights/service/HueServiceControllerTest.class
+com/foulkes/lights/mvc/routing/homeauto/annotation/lights/LightHueTransformerTest.class
 com/foulkes/lights/mvc/routing/homeauto/annotation/switches/router/WemoTest.class
+com/foulkes/lights/mvc/routing/homeauto/annotation/lights/router/HueTest.class
+com/foulkes/lights/mvc/routing/homeauto/annotation/switches/TestState.class
+com/foulkes/lights/mvc/routing/homeauto/annotation/switches/SwitchWemoTransformerTest.class

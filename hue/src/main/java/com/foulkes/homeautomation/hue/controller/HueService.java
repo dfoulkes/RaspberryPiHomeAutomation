@@ -21,12 +21,14 @@ import com.philips.lighting.model.PHBridge;
 import com.philips.lighting.model.PHBridgeResourcesCache;
 import com.philips.lighting.model.PHLight;
 import com.philips.lighting.model.PHLightState;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.List;
+
 
 /**
  * Created by danfoulkes on 03/02/2016.
@@ -37,9 +39,11 @@ public class HueService implements HueService_ {
 
     private PHSDKListenerImpl phsdkListener;
     private PHHueSDK phHueSDK;
-    private final String USERNAME = "669dea6d7eaae4a94f8cb18955de1240";
+    private final String username = "669dea6d7eaae4a94f8cb18955de1240";
     private PHAccessPoint accessPoint;
     private DiscoverThread discoverThread;
+    private org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(HueService.class);
+
 
     @Autowired
     private ComponentService componentService;
@@ -50,13 +54,13 @@ public class HueService implements HueService_ {
         phHueSDK.setDeviceName("javaWebApp");
 
 
-        phsdkListener = new PHSDKListenerImpl(phHueSDK, USERNAME);
+        phsdkListener = new PHSDKListenerImpl(phHueSDK, username);
         phHueSDK.getNotificationManager().registerSDKListener(phsdkListener);
         try {
             setupAccessPoint();
           //  discoverDevices();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -82,7 +86,7 @@ public class HueService implements HueService_ {
             discoverThread.kill();
             Thread.sleep(30010);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -95,7 +99,7 @@ public class HueService implements HueService_ {
             try {
                 Thread.sleep(10000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                logger.error(e.getMessage());
             }
         // now connect 1st access point
         //TODO work with multiple access points
@@ -197,14 +201,14 @@ public class HueService implements HueService_ {
                         try {
                             componentService.add(accessPoint.getMacAddress(), ServiceTypes.LIGHT_HUE, accesPoint.getIpAddress(), x.getUniqueId(), GenericType.LIGHT);
                         } catch (AlreadyExists alreadyExists) {
-                            alreadyExists.printStackTrace();
+                            logger.error(alreadyExists.getMessage());
                         } catch (FailedToAdd failedToAdd) {
-                            failedToAdd.printStackTrace();
+                            logger.error(failedToAdd.getMessage());
                         }
                     }
                     Thread.sleep(30000);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    logger.error(e.getMessage());
                 }
             }
         }
