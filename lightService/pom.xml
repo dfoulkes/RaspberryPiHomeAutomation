@@ -136,14 +136,9 @@
                             </execution>
                         </executions>
                     </plugin>
-
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <skip>true</skip>
-                        </configuration>
                     </plugin>
-
                 </plugins>
             </build>
         </profile>
@@ -159,7 +154,24 @@
                             <warName>light</warName>
                 </configuration>
             </plugin>
-        </plugins>
+
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <server>raspberry</server>
+                    <url>http://192.168.1.197:8080/manager/text</url>
+                    <path>light</path>
+                    <update>true</update>
+                    <warFile>${project.build.directory}/light.war</warFile>
+                   <skip>true</skip>
+                </configuration>
+            </plugin>
+
+    </plugins>
+
+
+
     </build>
 
 

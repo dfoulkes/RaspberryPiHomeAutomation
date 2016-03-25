@@ -17,7 +17,22 @@
 
         <quartz.version>2.2.1</quartz.version>
         <jackson.version>2.2.3</jackson.version>
+        <tomcat.path>core</tomcat.path>
     </properties>
+
+
+    <repositories>
+        <repository>
+            <id>apache.snapshots</id>
+            <url>https://repository.apache.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -56,17 +71,20 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.9.5</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>com.foulkes.homeAutomation</groupId>
             <artifactId>upnp</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
         <dependency>
             <groupId>com.foulkes.homeAutomation</groupId>
             <artifactId>hue</artifactId>
@@ -81,7 +99,7 @@
           Dev Profile
         -->
         <profile>
-           <id>dev</id>
+            <id>dev</id>
 
             <build>
                 <finalName>core</finalName>
@@ -158,6 +176,18 @@
                         </configuration>
                     </plugin>
 
+                    <plugin>
+                        <groupId>org.apache.tomcat.maven</groupId>
+                        <artifactId>tomcat7-maven-plugin</artifactId>
+                        <configuration>
+                            <server>raspberry</server>
+                            <url>http://192.168.1.5:8080/manager/text</url>
+                            <path>/core</path>
+                            <update>true</update>
+                            <warFile>${project.build.directory}/core.war</warFile>
+                        </configuration>
+                    </plugin>
+
                 </plugins>
             </build>
         </profile>
@@ -165,15 +195,16 @@
     </profiles>
 
     <build>
-      <plugins>
-        <plugin>
-            <artifactId>maven-war-plugin</artifactId>
-            <version>2.6</version>
-            <configuration>
-                <warName>core</warName>
-            </configuration>
-        </plugin>
-      </plugins>
+        <finalName>core</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <warName>core</warName>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
 </project>

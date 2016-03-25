@@ -143,6 +143,23 @@
     </dependencies>
 
     <build>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>2.2</version>
+                    <configuration>
+                        <server>local</server>
+                        <update>true</update>
+                        <charset>UTF-8</charset>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
         <finalName>web</finalName>
         <plugins>
             <plugin>
@@ -169,15 +186,61 @@
                 <version>3.0.1</version>
             </plugin>
 
+            <!--<plugin>-->
+                <!--<groupId>org.apache.tomcat.maven</groupId>-->
+                <!--<artifactId>tomcat7-maven-plugin</artifactId>-->
+                <!--<version>2.1</version>-->
+                <!--<configuration>-->
+                    <!--<webapps>-->
+                        <!--<webapp>-->
+                            <!--<groupId>com.foulkes.homeautomation</groupId>-->
+                            <!--<artifactId>core</artifactId>-->
+                            <!--<version>2.0</version>-->
+                            <!--<type>war</type>-->
+                            <!--<asWebapp>true</asWebapp>-->
+                            <!--<path>core</path>-->
+                            <!--<server>raspberry</server>-->
+                            <!--<update>true</update>-->
+                            <!--<url>http://192.168.1.197:8080/manager/text</url>-->
+                            <!--<warFile>${project.build.directory}/core/core.war</warFile>-->
+                        <!--</webapp>-->
+                        <!--<webapp>-->
+                            <!--<groupId>com.foulkes.homeautomation</groupId>-->
+                            <!--<artifactId>web</artifactId>-->
+                            <!--<version>2.0</version>-->
+                            <!--<type>war</type>-->
+                            <!--<asWebapp>true</asWebapp>-->
+                            <!--<path>web</path>-->
+                            <!--<server>raspberry</server>-->
+                            <!--<update>true</update>-->
+                            <!--<url>http://192.168.1.197:8080/manager/text</url>-->
+                            <!--<warFile>${project.build.directory}/web/web.war</warFile>-->
+                        <!--</webapp>-->
+                    <!--</webapps>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+
         </plugins>
     </build>
 
     <profiles>
         <profile>
             <id>dev</id>
+            <properties>
+                <tomcat.server.url>http://192.168.1.197:8080/manager/text</tomcat.server.url>
+                <homeautomation.finalName>web</homeautomation.finalName>
+            </properties>
         </profile>
+
         <profile>
             <id>prod</id>
+            <properties>
+                <tomcat.server.url>http://192.168.1.197:8080/manager/text</tomcat.server.url>
+                <homeautomation.finalName>web</homeautomation.finalName>
+            </properties>
         </profile>
+
     </profiles>
+
+
 </project>

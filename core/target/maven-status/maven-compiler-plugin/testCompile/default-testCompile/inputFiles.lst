@@ -1,8 +1,8 @@
+/Users/danfoulkes/Library/Mobile Documents/com~apple~CloudDocs/Workspace/RaspberryPiSwitch/core/src/test/java/com/foulkes/lights/mvc/routing/homeauto/annotation/switches/TestState.java
 /Users/danfoulkes/Library/Mobile Documents/com~apple~CloudDocs/Workspace/RaspberryPiSwitch/core/src/test/java/com/foulkes/lights/mvc/routing/homeauto/annotation/switches/SwitchHomeBrewTransformerTest.java
-/Users/danfoulkes/Library/Mobile Documents/com~apple~CloudDocs/Workspace/RaspberryPiSwitch/core/src/test/java/com/foulkes/lights/mvc/routing/homeauto/annotation/lights/router/HueTest.java
-/Users/danfoulkes/Library/Mobile Documents/com~apple~CloudDocs/Workspace/RaspberryPiSwitch/core/src/test/java/com/foulkes/lights/mvc/routing/homeauto/annotation/lights/LightHueTransformerTest.java
+/Users/danfoulkes/Library/Mobile Documents/com~apple~CloudDocs/Workspace/RaspberryPiSwitch/core/src/test/java/com/foulkes/lights/mvc/routing/homeauto/annotation/switches/router/WemoTest.java
+/Users/danfoulkes/Library/Mobile Documents/com~apple~CloudDocs/Workspace/RaspberryPiSwitch/core/src/test/java/com/foulkes/lights/mvc/routing/homeauto/annotation/switches/SwitchWemoTransformerTest.java
 /Users/danfoulkes/Library/Mobile Documents/com~apple~CloudDocs/Workspace/RaspberryPiSwitch/core/src/test/java/com/foulkes/lights/mvc/routing/homeauto/annotation/lights/service/HueServiceControllerTest.java
 /Users/danfoulkes/Library/Mobile Documents/com~apple~CloudDocs/Workspace/RaspberryPiSwitch/core/src/test/java/com/foulkes/lights/mvc/routing/homeauto/annotation/switches/router/EntireLineTest.java
-/Users/danfoulkes/Library/Mobile Documents/com~apple~CloudDocs/Workspace/RaspberryPiSwitch/core/src/test/java/com/foulkes/lights/mvc/routing/homeauto/annotation/switches/TestState.java
-/Users/danfoulkes/Library/Mobile Documents/com~apple~CloudDocs/Workspace/RaspberryPiSwitch/core/src/test/java/com/foulkes/lights/mvc/routing/homeauto/annotation/switches/SwitchWemoTransformerTest.java
-/Users/danfoulkes/Library/Mobile Documents/com~apple~CloudDocs/Workspace/RaspberryPiSwitch/core/src/test/java/com/foulkes/lights/mvc/routing/homeauto/annotation/switches/router/WemoTest.java
+/Users/danfoulkes/Library/Mobile Documents/com~apple~CloudDocs/Workspace/RaspberryPiSwitch/core/src/test/java/com/foulkes/lights/mvc/routing/homeauto/annotation/lights/LightHueTransformerTest.java
+/Users/danfoulkes/Library/Mobile Documents/com~apple~CloudDocs/Workspace/RaspberryPiSwitch/core/src/test/java/com/foulkes/lights/mvc/routing/homeauto/annotation/lights/router/HueTest.java
