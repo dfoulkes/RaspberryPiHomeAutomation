@@ -8,11 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <modelVersion>4.0.0</modelVersion>
-
-
     <groupId>com.foulkes.homeAutomation</groupId>
     <artifactId>wemo</artifactId>
+    <modelVersion>4.0.0</modelVersion>
 
     <properties>
         <springframework.version>4.1.4.RELEASE</springframework.version>

@@ -28,7 +28,6 @@ com/foulkes/lights/mvc/routing/homeauto/annotation/switches/payloads/SwitchRespo
 com/foulkes/lights/mvc/routing/homeauto/annotation/switches/enums/SwitchType.class
 com/foulkes/lights/mvc/frontend/model/ComponentItem.class
 com/foulkes/lights/mvc/routing/homeauto/annotation/switches/transformers/SwitchWemoTransformer.class
-com/foulkes/lights/mvc/routing/homeauto/annotation/switches/transformers/SwitchWemoTransformer$1.class
 com/foulkes/lights/mvc/routing/homeauto/annotation/switches/transformers/SwitchTransformer_.class
 com/foulkes/lights/mvc/routing/homeauto/WebEvent.class
 com/foulkes/lights/mvc/frontend/model/RoomItem.class
