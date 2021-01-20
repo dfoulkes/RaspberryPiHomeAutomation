@@ -30,7 +30,7 @@
     <properties>
         <spring.version>4.1.1.RELEASE</spring.version>
         <springframework.version>4.1.4.RELEASE</springframework.version>
-        <jackson.databind-version>2.2.3</jackson.databind-version>
+        <jackson.databind-version>2.9.10.7</jackson.databind-version>
     </properties>
 
     <modules>
