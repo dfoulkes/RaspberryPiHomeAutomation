@@ -28,8 +28,8 @@
     </developers>
 
     <properties>
-        <spring.version>4.1.1.RELEASE</spring.version>
-        <springframework.version>4.1.4.RELEASE</springframework.version>
+        <spring.version>6.0.0</spring.version>
+        <springframework.version>6.0.0</springframework.version>
         <jackson.databind-version>2.2.3</jackson.databind-version>
     </properties>
 
