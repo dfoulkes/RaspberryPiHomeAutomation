@@ -15,7 +15,7 @@
     <artifactId>web</artifactId>
 
     <properties>
-        <springframework.version>4.1.4.RELEASE</springframework.version>
+        <springframework.version>5.2.20.RELEASE</springframework.version>
         <quartz.version>2.2.1</quartz.version>
         <jackson.version>2.2.3</jackson.version>
         <tomcat.path>web</tomcat.path>
